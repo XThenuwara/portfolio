@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Icon } from '@iconify/react/dist/iconify.js'
-import { Button } from '../../components/ui/button'
+import { Button } from '../../../components/ui/button'
 import Link from 'next/link'
 
 const GithubStatsCard = () => {
