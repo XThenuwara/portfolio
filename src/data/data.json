@@ -42,6 +42,178 @@
     "Experience": {
       "startDate": "2022-05-03",
       "companyList": []
+    },
+    "skills": {
+      "lang": [
+        {
+          "name": "Javascript",
+          "icon": "logos:javascript"
+        },
+        {
+          "name": "Typescript",
+          "icon": "logos:typescript-icon"
+        },
+        {
+          "name": "C#",
+          "icon": "devicon:csharp"
+        },
+        {
+          "name": "Go",
+          "icon": "skill-icons:golang"
+        }
+      ],
+      "frontendFrameworks": [
+        {
+          "name": "React",
+          "icon": "logos:react"
+        },
+        {
+          "name": "NextJS",
+          "icon": "logos:nextjs-icon"
+        },
+        {
+          "name": "Angular",
+          "icon": "logos:angular-icon"
+        },
+        {
+          "name": "VueJS",
+          "icon": "logos:vue"
+        },
+        {
+          "name": "Nuxt",
+          "icon": "logos:nuxt-icon"
+        }
+      ],
+      "backendFrameworks": [
+        {
+          "name": "NodeJS",
+          "icon": "logos:nodejs-icon"
+        },
+        {
+          "name": "Express",
+          "icon": "skill-icons:expressjs-light"
+        },
+        {
+          "name": "NestJS",
+          "icon": "logos:nestjs"
+        },
+        {
+          "name": ".Net",
+          "icon": "logos:dotnet"
+        }
+      ],
+      "databases": [
+        {
+          "name": "MongoDB",
+          "icon": "logos:mongodb"
+        },
+        {
+          "name": "MySQL",
+          "icon": "logos:mysql-icon"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "logos:postgresql"
+        },
+        {
+          "name": "Redis",
+          "icon": "logos:redis"
+        },
+        {
+          "name": "Firebase",
+          "icon": "logos:firebase"
+        },
+        {
+          "name": "MariaDB",
+          "icon": "logos:mariadb"
+        },
+        {
+          "name": "SQLite",
+          "icon": "logos:sqlite"
+        },
+        {
+          "name": "Oracle",
+          "icon": "logos:oracle"
+        }
+      ],
+      "devOps": [
+        {
+          "name": "NewRelic",
+          "icon": "logos:new-relic-icon"
+        },
+        {
+          "name": "Prometheus",
+          "icon": "logos:prometheus"
+        },
+        {
+          "name": "Netlify",
+          "icon": "logos:netlify-icon"
+        },
+        {
+          "name": "Vercel",
+          "icon": "logos:vercel-icon"
+        }
+      ],
+      "softwares": [
+        {
+          "name": "Git",
+          "icon": "logos:git-icon"
+        },
+        {
+          "name": "Docker",
+          "icon": "logos:docker-icon"
+        },
+        {
+          "name": "Jira",
+          "icon": "logos:jira"
+        },
+        {
+          "name": "Confluence",
+          "icon": "logos:confluence"
+        },
+        {
+          "name": "VSCode",
+          "icon": "logos:visual-studio-code"
+        },
+        {
+          "name": "Postman",
+          "icon": "logos:postman-icon"
+        },
+        {
+          "name": "Figma",
+          "icon": "logos:figma"
+        }
+      ],
+      "aws": [
+        {
+          "name": "Amplify",
+          "icon": "logos:aws-amplify"
+        },
+        {
+          "name": "Cognito",
+          "icon": "logos:aws-cognito"
+        },
+        {
+          "name": "DynamoDB",
+          "icon": "logos:aws-dynamodb"
+        },
+        {
+          "name": "Lambda",
+          "icon": "logos:aws-lambda"
+        },
+        {
+          "name": "S3",
+          "icon": "logos:aws-s3"
+        },
+        {
+          "name": "Cloud Formation",
+          "icon": "logos:aws-cloudformation"
+        },
+        {
+          "name": "App Sync",
+          "icon": "logos:aws-appsync"
+        }
+      ]
     }
   }
 }

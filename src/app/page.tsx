@@ -2,10 +2,11 @@
 
 import React from 'react'
 import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout'
-import ReactGridCard from '../components/react-grid/ReactGridCard'
-import ProfileCard from './components/ProfileCard'
 import { useResponsiveRowHeight } from '@/lib/hooks/useResponsiveRowHeight'
-import ExperienceCard from './components/ExperienceCard'
+import ReactGridCard from '@/components/react-grid/ReactGridCard'
+import ProfileCard from '@/app/components/ProfileCard'
+import ExperienceCard from '@/app/components/ExperienceCard'
+import SkillsCard from '@/app/components/SkillsCard'
 
 interface GridState {
     static: boolean
@@ -24,7 +25,7 @@ export default function Home() {
 
     const breakpoints = { lg: 996, md: 768, sm: 578 }
     const cols = { lg: 4, md: 4, sm: 2 }
-    
+
     const rowHeight = useResponsiveRowHeight(breakpoints)
 
     const layouts: Layouts = {
@@ -71,13 +72,19 @@ export default function Home() {
                     compactType="vertical"
                     margin={[16, 16]}
                     containerPadding={[16, 16]}
-                    className='grid-container'
+                    className="grid-container"
                 >
-                    <ReactGridCard key="1">
+                    <ReactGridCard key="1" id="1">
                         <ProfileCard />
                     </ReactGridCard>
-                    <ReactGridCard key="2">
+                    <ReactGridCard key="2" id="2">
                         <ExperienceCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="3" id="3">
+                        <ExperienceCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="4" id="4" isExpandable>
+                        <SkillsCard />
                     </ReactGridCard>
                 </ResponsiveGridLayout>
             </div>
