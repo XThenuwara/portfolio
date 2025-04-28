@@ -5,6 +5,7 @@ import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout'
 import ReactGridCard from '../components/react-grid/ReactGridCard'
 import ProfileCard from './components/ProfileCard'
 import { useResponsiveRowHeight } from '@/lib/hooks/useResponsiveRowHeight'
+import ExperienceCard from './components/ExperienceCard'
 
 interface GridState {
     static: boolean
@@ -74,6 +75,9 @@ export default function Home() {
                 >
                     <ReactGridCard key="1">
                         <ProfileCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="2">
+                        <ExperienceCard />
                     </ReactGridCard>
                 </ResponsiveGridLayout>
             </div>

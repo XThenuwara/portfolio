@@ -28,11 +28,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${quicksand.variable} ${afacad.variable} antialiased container mx-auto p-4`}>
-                <ThemeProvider 
-                    attribute="class" 
-                    defaultTheme="system" 
-                    enableSystem
-                >
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     <div className="transition-colors duration-100 ease-in-out">
                         <section className="my-8 h-full">{children}</section>
                         <Footer />
