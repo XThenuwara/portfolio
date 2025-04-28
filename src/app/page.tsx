@@ -9,6 +9,8 @@ import ExperienceCard from '@/app/components/ExperienceCard'
 import SkillsCard from '@/app/components/SkillsCard'
 import ProjectsCard from '@/app/components/ProjectsCard'
 import GithubStatsCard from '@/app/components/GithubStatsCard'
+import GithubContributionGraph from './components/GithubContributionGraphCard'
+import QuoteCard from './components/QuoteCard'
 
 interface GridState {
     static: boolean
@@ -90,6 +92,15 @@ export default function Home() {
                     </ReactGridCard>
                     <ReactGridCard key="5" id="5" isExpandable className='p-2 md:p-4 lg:p-6'>
                         <ProjectsCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="6" id="6" isExpandable className='p-2 md:p-4 lg:p-6'>
+                        <div>Blog card</div>
+                    </ReactGridCard>
+                    <ReactGridCard key="7" id="7" isExpandable className='p-2 md:p-4 lg:p-6 h-full'>
+                        <GithubContributionGraph/>
+                    </ReactGridCard>
+                    <ReactGridCard key="8" id="8" isExpandable className='p-2 md:p-4 lg:p-6 h-full'>
+                        <QuoteCard/>
                     </ReactGridCard>
                 </ResponsiveGridLayout>
             </div>
