@@ -33,26 +33,14 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                         <Card
                             ref={ref}
                             className={cn(
-                                'overflow-hidden rounded-sm border bg-card text-card-foreground shadow transition-all duration-300',
+                                'h-full overflow-hidden rounded-sm border bg-card text-card-foreground shadow transition-all duration-300',
                                 isExpandable && 'hover:shadow-lg',
                                 className
                             )}
                             {...props}
                         >
-                            <motion.div layoutId={`header-${id}`}>
-                                <CardHeader>
-                                    <motion.div layoutId={`title-${id}`}>
-                                        <CardTitle>{title}</CardTitle>
-                                    </motion.div>
-                                    {description && (
-                                        <motion.div layoutId={`desc-${id}`}>
-                                            <CardDescription>{description}</CardDescription>
-                                        </motion.div>
-                                    )}
-                                </CardHeader>
-                            </motion.div>
                             <motion.div layoutId={`content-${id}`}>
-                                <CardContent>{children}</CardContent>
+                                <CardContent className='p-0'>{children}</CardContent>
                             </motion.div>
                         </Card>
                     </motion.div>
@@ -66,14 +54,14 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setIsExpanded(false)}
-                                className="fixed inset-0 bg-black/50 z-40"
+                                className="fixed inset-0  z-40 bg-gray-700/25 dark:bg-gray-700/25 backdrop-blur"
                             />
                             <motion.div
                                 layoutId={`card-${id}`}
                                 className="fixed z-50 w-[90vw] max-w-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                 transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                             >
-                                <Card>
+                                <Card className="glass overflow-hidden">
                                     <motion.div layoutId={`header-${id}`}>
                                         <CardHeader>
                                             <div className="flex justify-between items-start">
@@ -110,11 +98,6 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                         exit={{ opacity: 0, y: 10 }}
                                         transition={{ delay: 0.2 }}
                                     >
-                                        <CardFooter>
-                                            <Button onClick={() => setIsExpanded(false)} className="ml-auto">
-                                                Close
-                                            </Button>
-                                        </CardFooter>
                                     </motion.div>
                                 </Card>
                             </motion.div>

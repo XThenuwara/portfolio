@@ -7,6 +7,7 @@ import ReactGridCard from '@/components/react-grid/ReactGridCard'
 import ProfileCard from '@/app/components/ProfileCard'
 import ExperienceCard from '@/app/components/ExperienceCard'
 import SkillsCard from '@/app/components/SkillsCard'
+import ProjectsCard from '@/app/components/ProjectsCard'
 
 interface GridState {
     static: boolean
@@ -77,7 +78,7 @@ export default function Home() {
                     <ReactGridCard key="1" id="1">
                         <ProfileCard />
                     </ReactGridCard>
-                    <ReactGridCard key="2" id="2">
+                    <ReactGridCard key="2" id="2" className='p-2 md:p-4 lg:p-6'>
                         <ExperienceCard />
                     </ReactGridCard>
                     <ReactGridCard key="3" id="3">
@@ -85,6 +86,9 @@ export default function Home() {
                     </ReactGridCard>
                     <ReactGridCard key="4" id="4" isExpandable>
                         <SkillsCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="5" id="5" isExpandable className='p-2 md:p-4 lg:p-6'>
+                        <ProjectsCard />
                     </ReactGridCard>
                 </ResponsiveGridLayout>
             </div>

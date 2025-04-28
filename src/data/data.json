@@ -22,6 +22,7 @@
     "name": "Yasas Hansaka Thenuwara",
     "title": "Software Engineer | Undergraduate",
     "bio": "",
+    "quote": "Embracing the web, experimenting with UIs, and devoted to software creation",
     "contact": {
       "email": "xthenuwara@gmail.com",
       "phone": "",
@@ -214,6 +215,13 @@
           "icon": "logos:aws-appsync"
         }
       ]
-    }
+    },
+    "projects": [
+      {
+        "title": "Keycloak Kit",
+        "description": "batch user management tool for Keycloak, import your user list in just three simple steps, streamlining your authentication and access 🔐✨ #Keycloak",
+        "link": "https://github.com/XThenuwara/keycloak-kit"
+      }
+    ]
   }
 }
