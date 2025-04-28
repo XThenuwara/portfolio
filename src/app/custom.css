@@ -1,0 +1,92 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Afacad', sans-serif;
+    font-weight: bold;
+}
+
+span,
+div,
+a,
+p {
+    font-family: 'Quicksand', sans-serif;
+}
+
+button {
+    font-weight: bold !important;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* react grid */
+
+.grid-container {
+    max-width: 1200px;
+    position: relative;
+    margin: -16px auto 0px;
+    padding-bottom: 80px;
+}
+
+@media (max-width: 996px) {
+    .grid-container {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 578px) {
+    .grid-container {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 320px) {
+    .grid-container {
+        max-width: 320px;
+    }
+}
+
+/* ScrollBar */
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 0px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 1px solid rgba(149, 149, 149, 1z);
+}
+
+/* glass */
+.light .glass {
+    background: rgba(162, 162, 162, 0.192);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+  }
+  
+  .dark .glass {
+    background: rgba(11, 11, 11, 0.192);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+  }

@@ -10,9 +10,9 @@ interface ReactGridCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(({ className, children, header, ...props }, ref) => {
     return (
-        <Card ref={ref} className={cn('rounded-sm border bg-card text-card-foreground shadow hover:shadow-lg', className)} {...props}>
+        <Card ref={ref} className={cn('overflow-hidden rounded-sm border bg-card text-card-foreground shadow hover:shadow-lg p-2 md:p-4 lg:p-4', className)} {...props}>
             {header && <CardHeader>{header}</CardHeader>}
-            <CardContent className="p-6">{children}</CardContent>
+            {children}
         </Card>
     )
 })

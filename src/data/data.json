@@ -23,19 +23,25 @@
     "title": "Software Engineer | Undergraduate",
     "bio": "",
     "contact": {
-      "email": "",
+      "email": "xthenuwara@gmail.com",
       "phone": "",
       "location": ""
     },
-    "social": {
-      "github": "",
-      "linkedin": "",
-      "twitter": ""
-    },
-    "Experience" : {
+    "social": [
+      {
+        "name": "Github",
+        "url": "https://github.com/XThenuwara",
+        "icon": "mingcute:github-fill"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/xthenuwara/",
+        "icon": "mingcute:linkedin-fill"
+      }
+    ],
+    "Experience": {
       "startDate": "2022-05-03",
-      "companyList": [
-      ]
+      "companyList": []
     }
   }
 }

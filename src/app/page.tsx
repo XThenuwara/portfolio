@@ -3,6 +3,9 @@
 import React from 'react'
 import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout'
 import ReactGridCard from '../components/react-grid/ReactGridCard'
+import ProfileCard from './components/ProfileCard'
+import { useResponsiveRowHeight } from '@/lib/hooks/useResponsiveRowHeight'
+
 interface GridState {
     static: boolean
     isResizable: boolean
@@ -18,7 +21,10 @@ export default function Home() {
         isDraggable: false,
     })
 
-    const [rowHeight] = React.useState<number>(180)
+    const breakpoints = { lg: 996, md: 768, sm: 578 }
+    const cols = { lg: 4, md: 4, sm: 2 }
+    
+    const rowHeight = useResponsiveRowHeight(breakpoints)
 
     const layouts: Layouts = {
         sm: [
@@ -53,9 +59,6 @@ export default function Home() {
         ],
     }
 
-    const breakpoints = { lg: 996, md: 768, sm: 578 }
-    const cols = { lg: 4, md: 4, sm: 2 }
-
     return (
         <main className="min-h-screen transition-all">
             <div>
@@ -67,9 +70,10 @@ export default function Home() {
                     compactType="vertical"
                     margin={[16, 16]}
                     containerPadding={[16, 16]}
+                    className='grid-container'
                 >
                     <ReactGridCard key="1">
-                        <p>Your card content here</p>
+                        <ProfileCard />
                     </ReactGridCard>
                 </ResponsiveGridLayout>
             </div>
