@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "title": "Yasas Hansaka Thenuwara",
+    "description": "Software Engineer | Undergraduate",
+    "openGraph": {
+      "type": "website",
+      "locale": "en_IE",
+      "url": "https://xthenuwara.github.io/xthenuwra",
+      "title": "Yasas Hansaka Thenuwara",
+      "description": "Software Engineer | Undergraduate",
+      "images": [
+        {
+          "url": "https://imgtr.ee/images/2024/01/02/e52044e85751c69bb9cb17978832c29c.png",
+          "width": 1200,
+          "height": 600,
+          "alt": "Yasas Hansaka Thenuwara"
+        }
+      ]
+    }
+  },
+  "profile": {
+    "name": "Yasas Hansaka Thenuwara",
+    "title": "Software Engineer | Undergraduate",
+    "bio": "",
+    "contact": {
+      "email": "",
+      "phone": "",
+      "location": ""
+    },
+    "social": {
+      "github": "",
+      "linkedin": "",
+      "twitter": ""
+    },
+    "Experience" : {
+      "startDate": "2022-05-03",
+      "companyList": [
+      ]
+    }
+  }
+}
