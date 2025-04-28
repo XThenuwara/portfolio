@@ -11,7 +11,7 @@ const ProjectsCard = () => {
     <div className="h-full w-full relative flex justify-between flex-col z-50">
       <div className="flex gap-5">
         {projects.map((project, index) => (
-          <div key={index} className="bg-gray-50 p-2 md:p-3 rounded-lg w-full flex flex-col">
+          <div key={index} className="bg-gray-50 dark:bg-gray-900 p-2 md:p-3 rounded-lg w-full flex flex-col">
             <div>
               <h3 className="text-2xl font-semibold">{project.title}</h3>
               <span className="text-xs font-medium">{project.description}</span>

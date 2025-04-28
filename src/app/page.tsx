@@ -8,6 +8,7 @@ import ProfileCard from '@/app/components/ProfileCard'
 import ExperienceCard from '@/app/components/ExperienceCard'
 import SkillsCard from '@/app/components/SkillsCard'
 import ProjectsCard from '@/app/components/ProjectsCard'
+import GithubStatsCard from '@/app/components/GithubStatsCard'
 
 interface GridState {
     static: boolean
@@ -81,8 +82,8 @@ export default function Home() {
                     <ReactGridCard key="2" id="2" className='p-2 md:p-4 lg:p-6'>
                         <ExperienceCard />
                     </ReactGridCard>
-                    <ReactGridCard key="3" id="3">
-                        <ExperienceCard />
+                    <ReactGridCard key="3" id="3" className='p-2 md:p-4 lg:p-6'>
+                        <GithubStatsCard />
                     </ReactGridCard>
                     <ReactGridCard key="4" id="4" isExpandable>
                         <SkillsCard />
