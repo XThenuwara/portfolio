@@ -1,7 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { Card, CardContent } from '../../components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Icon } from '@iconify/react/dist/iconify.js'
+import nextConfig from '@/../next.config'
 
 async function getMarkdownPosts() {
     const repoOwner = 'XThenuwara'
@@ -80,7 +81,7 @@ export default function Weblog() {
 
     return (
         <main className="container mx-auto px-4 py-8 min-h-screen">
-            <a href='/#/weblog' className='flex items-center gap-2 mb-8'>
+            <a href={`./#/weblog`} className='flex items-center gap-2 mb-8'>
                 <Icon icon="tabler:topology-star" width="32" />
                 <h1 className="text-4xl font-bold">WebLOG</h1>
             </a>
@@ -89,7 +90,7 @@ export default function Weblog() {
             ) : (
                 <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 transition-all duration-300">
                     {posts.map((post, index) => (
-                        <a key={index} href={`/#/weblog/post?id=${post.year}-${post.month}`} className="no-underline">
+                        <a key={index} href={`./#/weblog/post?id=${post.year}-${post.month}`} className="no-underline">
                             <Card className="prose max-w-none hover:scale-105 transition-all duration-300">
                                 <CardContent>
                                     <h2 className="text-2xl font-semibold">{post.title}</h2>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import data from '@/data/data.json'
+import nextConfig from '@/../next.config'
 
 async function getMarkdownPosts() {
     const repoOwner = data.blog.owner
@@ -90,7 +91,7 @@ export default function BlogCard() {
                 <div className="text-sm text-gray-500 mt-2">
                     {latestPost.month}/{latestPost.year}
                 </div>
-                <a href={`/#/weblog/post?id=${latestPost.year}-${latestPost.month}`} className="mt-4 inline-block text-blue-500 hover:text-blue-700">
+                <a href={`./${nextConfig.basePath}/#/weblog/post?id=${latestPost.year}-${latestPost.month}`} className="mt-4 inline-block text-blue-500 hover:text-blue-700">
                     Read more →
                 </a>
             </div>

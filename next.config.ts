@@ -1,12 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    loader: 'akamai',
-    path: '',
-    unoptimized: true
-  },
-  output: 'export'
+  output: 'export',
+  basePath: process.env.NODE_ENV === 'development' ? '/portfolio' : '/portfolio',
+  assetPrefix: process.env.NODE_ENV === 'development' ? '/portfolio' : './'
 };
 
 export default nextConfig;

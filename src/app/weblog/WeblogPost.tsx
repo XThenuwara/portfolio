@@ -3,7 +3,8 @@ import { useEffect, useState, useCallback } from 'react'
 import MDXContent from '@/components/MDXContent'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import data from '@/data/data.json'
-import LoadingSpinner from '../../components/LoadingSpinner'
+import LoadingSpinner from '@/components/LoadingSpinner'
+import nextConfig from '@/../next.config'
 
 interface BlogPostProps {
     id?: string
@@ -90,7 +91,7 @@ export default function BlogPost({ id }: BlogPostProps) {
                 <div className='flex flex-col items-center'>
                     <LoadingSpinner />
                     <div className="text-red-600 dark:text-red-400 mt-12">{error || 'Post not found'}</div>
-                    <a href="/#/weblog" className="flex flex-col items-center gap-2 mt-12">
+                    <a href={`./#/weblog`} className="flex flex-col items-center gap-2 mt-12">
                         <div className='flex items-center gap-2'>
                         <Icon icon="tabler:topology-star" width="32" />
                         <h1 className="text-4xl font-bold">WebLOG</h1>
@@ -109,7 +110,7 @@ export default function BlogPost({ id }: BlogPostProps) {
 
     return (
         <div className="container mx-auto px-4 min-h-screen">
-            <a href="/#/weblog" className="flex items-center gap-2 mb-8">
+            <a href={`./#/weblog`} className="flex items-center gap-2 mb-8">
                 <Icon icon="tabler:topology-star" width="32" />
                 <h1 className="text-4xl font-bold">WebLOG</h1>
             </a>
