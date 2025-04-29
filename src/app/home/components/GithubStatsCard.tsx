@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Icon } from '@iconify/react/dist/iconify.js'
-import { Button } from '../../../components/ui/button'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import LoadingSpinner from '@/components/LoadingSpinner'
+import profile from '@/data/data.json'
 
 const GithubStatsCard = () => {
   const [data, setData] = useState<any>(null)
@@ -11,7 +13,7 @@ const GithubStatsCard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/XThenuwara')
+        const response = await fetch(`https://api.github.com/users/${profile.blog.owner}`)
         if (!response.ok) {
           throw new Error('Failed to fetch data')
         }
@@ -28,11 +30,15 @@ const GithubStatsCard = () => {
   }, [])
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>
+      <LoadingSpinner/>
+    </div>
   }
 
   if (error) {
-    return <div>Error: {error}</div>
+    return <div>
+      <p>Error: {error}</p>
+    </div>
   }
 
   return (
