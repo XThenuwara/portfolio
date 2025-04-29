@@ -11,6 +11,8 @@ import ProjectsCard from '@/app/home/components/ProjectsCard'
 import GithubStatsCard from '@/app/home/components/GithubStatsCard'
 import GithubContributionGraph from '@/app/home/components/GithubContributionGraphCard'
 import QuoteCard from '@/app/home/components/QuoteCard'
+import BlogCard from '@/app/home/components/BlogCard'
+import Weblog from '@/app/weblog/Weblog'
 
 interface GridState {
     static: boolean
@@ -94,7 +96,7 @@ export default function Home() {
                         <ProjectsCard />
                     </ReactGridCard>
                     <ReactGridCard key="6" id="6" isExpandable className="p-2 md:p-4 lg:p-6">
-                        <div>Blog card</div>
+                        <BlogCard/>
                     </ReactGridCard>
                     <ReactGridCard key="7" id="7" isExpandable className="p-2 md:p-4 lg:p-6 h-full">
                         <GithubContributionGraph />
@@ -104,7 +106,9 @@ export default function Home() {
                     </ReactGridCard>
                 </ResponsiveGridLayout>
             </div>
-            <a href="#/weblog">sadasdas</a>
+            <div className='grid-container'>
+                <Weblog/>
+            </div>
         </main>
     )
 }

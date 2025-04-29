@@ -8,7 +8,7 @@ interface BreakPoints {
 
 export const useResponsiveRowHeight = (breakpoints: BreakPoints) => {
   const getRowHeight = (width: number) => {
-    if (width < breakpoints.sm) return 180  // mobile
+    if (width < breakpoints.sm) return 200  // mobile
     if (width < breakpoints.md) return 200  // tablet
     if (width < breakpoints.lg) return 220  // laptop
     return 280                              // desktop

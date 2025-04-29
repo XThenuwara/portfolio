@@ -223,5 +223,9 @@
         "link": "https://github.com/XThenuwara/keycloak-kit"
       }
     ]
+  },
+  "blog": {
+    "owner": "XThenuwara",
+    "repo": "WebLOG"
   }
 }

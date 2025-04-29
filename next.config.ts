@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     path: '',
     unoptimized: true
   },
-  assetPrefix: './',
   output: 'export'
 };
 

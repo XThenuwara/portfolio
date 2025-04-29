@@ -78,16 +78,16 @@ html {
 
 .light .glass {
     background: rgba(211, 213, 214, 0.314);
-    backdrop-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -ms-filter: blur(2px);
+    backdrop-filter: blur(25px);
+    -moz-filter: blur(25px);
+    -ms-filter: blur(25px);
 }
 
 .dark .glass {
     background: rgba(11, 11, 11, 0.192);
-    backdrop-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -ms-filter: blur(2px);
+    backdrop-filter: blur(25px);
+    -moz-filter: blur(25px);
+    -ms-filter: blur(25px);
 }
 
 /* Solar  */
@@ -183,4 +183,13 @@ html {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+.syntax-highlight span {
+    text-shadow: none !important;
+}
+
+.syntax-highlight code {
+    background-color: transparent !important;
 }
