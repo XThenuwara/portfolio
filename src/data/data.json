@@ -22,7 +22,7 @@
     "name": "Yasas Hansaka Thenuwara",
     "title": "Software Engineer | Undergraduate",
     "bio": "",
-    "quote": "Embracing the web, experimenting with UIs, and devoted to software creation",
+    "quote": "Embracing the web, experimenting with UIs, and driven by software creation",
     "contact": {
       "email": "xthenuwara@gmail.com",
       "phone": "",
@@ -42,7 +42,48 @@
     ],
     "Experience": {
       "startDate": "2022-05-03",
-      "companyList": []
+      "companyList": [
+        {
+          "name": "Allion Technologies",
+          "position": "Software Engineer",
+          "duration": "Jan 2024 - Jan 2025",
+          "period": "1y",
+          "projects": [
+            {
+              "name": "VHCS - Virtual Healthcare Consulting System",
+              "description": "Video Consultation & Management Platform for a mid-size US-based healthcare business.",
+              "responsibilities": [
+                "Full Stack Development (Angular/ Spring-boot/ Mysql)",
+                "Collaboration with Client & Agile Methodology",
+                "Feature design & implementation",
+                "Extensive Code Reviews & Production Deployments",
+                "AWS service integration (AWS Chime/ SES/ SQS/ XRay)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fortude",
+          "position": "Associate Software Engineer",
+          "duration": "May 2022 - Dec 2023",
+          "period": "1y 8m",
+          "projects": [
+            {
+              "name": "SFCS - Shop Flow Control System",
+              "description": "Manufacturing Control and Monitoring Project for a Leading Global Apparel Exporter.",
+              "responsibilities": [
+                "Full Stack Development (React/ PHP/ NestJs/ MongoDb/ MariaDb)",
+                "Bugs / Data Fixes, System Performance Optimizations",
+                "Cloud Migration Activities",
+                "GUI for Batch User Creation on Keycloak",
+                "Hands-on Monitoring Experience (New Relic/ Prometheus)",
+                "Production support, hotfix deployments, & application monitoring",
+                "Sanity Check Automation, Reports Automations, Deployment Verification"
+              ]
+            }
+          ]
+        }
+      ]
     },
     "skills": {
       "lang": [

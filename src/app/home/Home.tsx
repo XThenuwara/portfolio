@@ -13,6 +13,7 @@ import GithubContributionGraph from '@/app/home/components/GithubContributionGra
 import QuoteCard from '@/app/home/components/QuoteCard'
 import BlogCard from '@/app/home/components/BlogCard'
 import Weblog from '@/app/weblog/Weblog'
+import ExperienceTimeline from '@/app/home/components/ExperienceTimeline'
 
 interface GridState {
     static: boolean
@@ -83,10 +84,10 @@ export default function Home() {
                     <ReactGridCard key="1" id="1">
                         <ProfileCard />
                     </ReactGridCard>
-                    <ReactGridCard key="2" id="2" className="p-2 md:p-4 lg:p-6">
+                    <ReactGridCard key="2" id="2" isExpandable expandedContent={<ExperienceTimeline/>} className="p-2 md:p-4 lg:p-6">
                         <ExperienceCard />
                     </ReactGridCard>
-                    <ReactGridCard key="3" id="3" className="p-2 md:p-4 lg:p-6">
+                    <ReactGridCard key="3" id="3" isExpandable className="p-2 md:p-4 lg:p-6">
                         <GithubStatsCard />
                     </ReactGridCard>
                     <ReactGridCard key="4" id="4" isExpandable>

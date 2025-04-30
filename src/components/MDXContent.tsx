@@ -9,7 +9,18 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { Dialog, DialogContent } from './ui/dialog'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { useTheme } from 'next-themes'
-import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { oneDark, oneLight,    vscDarkPlus, 
+    vs, 
+    dracula, 
+    atomDark, 
+    duotoneDark, 
+    duotoneLight,
+    nightOwl,
+    oceanicNext,
+    okaidia,
+    solarizedlight,
+    tomorrow,
+    twilight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface MDXContentProps {
     content: string
@@ -58,30 +69,35 @@ export default function MDXContent({ content }: MDXContentProps) {
     }
 
     return (
-        <div className="mdx-content prose max-w-none bg-background dark:bg-card rounded-md p-2 md:p-4 lg:p-6">
+        <div className="mdx-content prose max-w-none bg-background dark:bg-card rounded-md p-2 md:p-4 lg:p-6 dark:font-medium">
             <MDXRemote
                 {...mdxSource}
                 components={{
                     h1: ({ children }) => <h1 className="text-4xl font-bold my-4">{children}</h1>,
-                    h2: ({ children }) => <h2 className="text-3xl font-bold my-3">{children}</h2>,
-                    h3: ({ children }) => <h3 className="text-2xl font-bold my-2">{children}</h3>,
+                    h2: ({ children }) => <h2 className="text-3xl font-bold my-3 mt-12">{children}</h2>,
+                    h3: ({ children }) => <h3 className="text-2xl font-bold my-2 mt-6">{children}</h3>,
                     p: ({ children }) => <p className="my-4 leading-relaxed">{children}</p>,
                     ul: ({ children }) => <ul className="list-disc pl-8 my-4">{children}</ul>,
                     ol: ({ children }) => <ol className="list-decimal pl-8 my-4">{children}</ol>,
                     li: ({ children }) => <li className="my-2">{children}</li>,
-                    blockquote: ({ children }) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">{children}</blockquote>,
+                    blockquote: ({ children }) => <blockquote className="border-l-4 border-gray-300 pl-4 italic">{children}</blockquote>,
                     code: ({ className, children }) => {
-                        const language = className ? className.replace('language-', '') : 'text'
+                        const content = String(children).trim()
+                        const words = content.split(/\s+/).length
+                        const language = className ? className.replace('language-', '') : ''
+
+                        if (words <= 10 && !language) {
+                            return <pre className="inline-block px-2 py-0  bg-gray-100 dark:bg-gray-800 border font-semibold rounded-full font-mono text-sm">{children}</pre>
+                        }
+
                         return (
                             <SyntaxHighlighter
-                                className="syntax-highlight !bg-transparent"
-                                language={language}
-                                style={theme === 'dark' ? oneDark : oneLight}
+                                className="syntax-highlight font-semibold rounded-lg"
+                                language={language || 'text'}
+                                style={theme === 'dark' ? atomDark : oneLight}
                                 customStyle={{
-                                    backgroundColor: 'transparent',
                                     borderRadius: '0.375rem',
                                     padding: '0.375rem 0.75rem',
-                                    fontSize: '1.2rem',
                                     lineHeight: '1.5',
                                     textShadow: 'none',
                                 }}
@@ -90,15 +106,12 @@ export default function MDXContent({ content }: MDXContentProps) {
                             </SyntaxHighlighter>
                         )
                     },
-                    pre: ({ children }) => (
-                        <pre className="bg-gray-100 dark:bg-background dark:border p-4 rounded my-4 overflow-x-auto">{children}</pre>
-                    ),
                     img: ({ src, alt }) => {
                         const [isOpen, setIsOpen] = useState(false)
 
                         return (
-                            <div className="w-full h-full">
-                                <img src={src} alt={alt} className="h-72 object-cover rounded-lg cursor-pointer" onClick={() => setIsOpen(true)} />
+                            <div className="w-full h-full my-9">
+                                <img src={src} alt={alt} className="max-h-72 md:object-cover rounded-lg cursor-pointer" onClick={() => setIsOpen(true)} />
                                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
                                     <DialogContent className="min-w-[90vw] min-h-[90vh]">
                                         <img src={src} alt={alt} className="w-full h-full object-contain" />

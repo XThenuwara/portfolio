@@ -14,7 +14,7 @@ const QuoteCard = () => {
                     ]}
                     />
             </span>
-            <div className="flex justify-end">
+            <div className="flex justify-end mt-12">
                 <Icon icon="mingcute:quote-right-fill" width="48" className="text-default-400" />
             </div>
         </div>

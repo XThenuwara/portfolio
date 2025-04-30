@@ -2,59 +2,7 @@
 import { useEffect, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Icon } from '@iconify/react/dist/iconify.js'
-import nextConfig from '@/../next.config'
-
-async function getMarkdownPosts() {
-    const repoOwner = 'XThenuwara'
-    const repoName = 'WebLOG'
-    const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/index.md`
-
-    try {
-        const response = await fetch(apiUrl, {
-            headers: {
-                Accept: 'application/vnd.github.v3+json',
-            },
-            next: { revalidate: 3600 },
-        })
-
-        if (!response.ok) {
-            throw new Error('Failed to fetch posts')
-        }
-
-        const data = await response.json()
-        const decodedContent = atob(data.content.replace(/\n/g, ''))
-        const lines = decodedContent.split('\n')
-        const posts = []
-        let currentYear = ''
-
-        for (const line of lines) {
-            if (line.startsWith('#')) {
-                currentYear = line.replace('#', '').trim()
-                continue
-            }
-
-            if (line.includes(' - ')) {
-                const [fileName, title, description] = line.split(' - ')
-                const [month] = fileName.split('.')
-                posts.push({
-                    year: currentYear,
-                    month: month,
-                    title: title.trim(),
-                    description: description.trim(),
-                    path: `${currentYear}/${fileName.trim()}`,
-                })
-            }
-        }
-
-        return posts.sort((a, b) => {
-            if (a.year !== b.year) return b.year.localeCompare(a.year)
-            return b.month.localeCompare(a.month)
-        })
-    } catch (error) {
-        console.error('Error fetching posts:', error)
-        return []
-    }
-}
+import { getMarkdownPosts } from '@/service/blog.service'
 
 export default function Weblog() {
     const [posts, setPosts] = useState<any[]>([])
@@ -88,15 +36,15 @@ export default function Weblog() {
             {posts.length === 0 ? (
                 <p className="text-gray-600">No posts available at the moment.</p>
             ) : (
-                <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 transition-all duration-300">
+                <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 transition-all duration-300">
                     {posts.map((post, index) => (
-                        <a key={index} href={`./#/weblog/post?id=${post.year}-${post.month}`} className="no-underline">
+                        <a key={index} href={`./#/weblog/post?id=${post.year}-${post.fileName}`} className="no-underline">
                             <Card className="prose max-w-none hover:scale-105 transition-all duration-300">
                                 <CardContent>
                                     <h2 className="text-2xl font-semibold">{post.title}</h2>
-                                    <h2 className="text text-gray-500 font-semibold mb-4">{post.description}</h2>
-                                    <div className="text-sm text-gray-600 mb-4">
-                                        {post.month}/{post.year}
+                                    <h2 className="text text-gray-500 dark:text-gray-300 font-medium mb-4">{post.description}</h2>
+                                    <div className="text-sm text-gray-500 mb-4">
+                                        {post.index}/{post.year}
                                     </div>
                                 </CardContent>
                             </Card>

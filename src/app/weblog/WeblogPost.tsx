@@ -27,7 +27,7 @@ export default function BlogPost({ id }: BlogPostProps) {
             const repoOwner = data.blog.owner
             const repoName = data.blog.repo
             const [year, index] = id.split('-')
-            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${year}/${index}.Temp.md`
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${year}/${index}`
 
             const response = await fetch(apiUrl, {
                 headers: {
