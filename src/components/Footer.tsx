@@ -5,13 +5,13 @@ import { ThemeToggler } from '@/components/ThemeToggler'
 
 const Footer = () => {
     return (
-      <div className='flex items-center justify-between w-full'>
-        <a href="#/" className="flex items-center gap-2 text-3xl font-semibold">
+      <div className='flex flex-col sm:flex-row items-center justify-between w-full px-2 sm:px-4 gap-4 sm:gap-0'>
+        <a href="#/" className="flex items-center gap-2 text-2xl sm:text-3xl font-semibold">
             Portfolio
         </a>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 justify-end'>
             <ThemeToggler />
-            <div className="flex flex-col items-end p-2 lg:p-4">
+            <div className="flex flex-col items-end p-2 sm:p-4">
                 <small className="text-xs font-semibold text-gray-400">
                     {new Date().getFullYear()} © {data.profile.name}
                 </small>

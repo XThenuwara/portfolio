@@ -10,15 +10,15 @@ const ExperienceTimeline = () => {
     content: (
       <div className="space-y-4">
         <div className="flex flex-col">
-          <h4 className="text-3xl font-bold text-foreground">{company.name}</h4>
-          <p className="text-neutral-700 dark:text-gray-400 font-medium">{company.position}</p>
+          <h4 className="text-lg md:text-3xl font-bold text-foreground">{company.name}</h4>
+          <p className="text-neutral-700 dark:text-gray-400 text-sm md:text-base font-medium">{company.position}</p>
         </div>
         
         {company.projects.map((project, index) => (
           <div key={index} className="space-y-2">
-            <h5 className="text-lg font-semibold text-foreground">{project.name}</h5>
-            <p className="text-sm text-neutral-700 dark:text-gray-400d">{project.description}</p>
-            <ul className="list-disc list-inside space-y-1 text-sm text-neutral-700 dark:text-gray-400">
+            <h5 className="text-base md:text-lg font-semibold text-foreground">{project.name}</h5>
+            <p className="text-xs md:text-sm text-neutral-700 dark:text-gray-400">{project.description}</p>
+            <ul className="list-disc list-inside space-y-1 text-xs md:text-base text-neutral-700 dark:text-gray-400">
               {project.responsibilities.map((responsibility, idx) => (
                 <li key={idx}>{responsibility}</li>
               ))}

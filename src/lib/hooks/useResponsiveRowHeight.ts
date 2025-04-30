@@ -8,24 +8,25 @@ interface BreakPoints {
 
 export const useResponsiveRowHeight = (breakpoints: BreakPoints) => {
   const getRowHeight = (width: number) => {
-    if (width < breakpoints.sm) return 200  // mobile
-    if (width < breakpoints.md) return 200  // tablet
-    if (width < breakpoints.lg) return 220  // laptop
-    return 280                              // desktop
+    if (width < breakpoints.sm) return 200
+    if (width < breakpoints.md) return 200
+    if (width < breakpoints.lg) return 220
+    return 280
   }
 
-  const [rowHeight, setRowHeight] = useState<number>(
-    getRowHeight(typeof window !== 'undefined' ? window.innerWidth : breakpoints.lg)
-  )
+  const [rowHeight, setRowHeight] = useState<number>(280)
 
   useEffect(() => {
     const handleResize = () => {
-      setRowHeight(getRowHeight(window.innerWidth))
+      const currentWidth = window.innerWidth
+      setRowHeight(getRowHeight(currentWidth))
     }
+
+    handleResize()
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [breakpoints.sm, breakpoints.md, breakpoints.lg])
 
   return rowHeight
 }

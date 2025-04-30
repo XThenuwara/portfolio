@@ -30,7 +30,7 @@ const GithubStatsCard = () => {
   }, [])
 
   if (loading) {
-    return <div>
+    return <div className='flex justify-center items-center mt-12'>
       <LoadingSpinner/>
     </div>
   }

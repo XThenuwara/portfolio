@@ -109,7 +109,7 @@ export default function BlogPost({ id }: BlogPostProps) {
     }
 
     return (
-        <div className="container mx-auto px-4 min-h-screen">
+        <div className="container mx-auto px-1 min-h-screen">
             <a href={`./#/weblog`} className="flex items-center gap-2 mb-8">
                 <Icon icon="tabler:topology-star" width="32" />
                 <h1 className="text-4xl font-bold">WebLOG</h1>

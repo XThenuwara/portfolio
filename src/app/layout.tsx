@@ -8,6 +8,7 @@ import './globals.css'
 import './custom.css'
 import 'react-grid-layout/css/styles.css'
 import 'react-resizable/css/styles.css'
+import Script from 'next/script'
 
 export const metadata: Metadata = data.metadata
 
@@ -15,9 +16,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
+                {/* <script src="https://unpkg.com/react-scan/dist/auto.global.js" /> */}
+                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-E78BVRJRF5" />
+                <Script id="google-analytics">
+                        {` 
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+
+                            gtag('config', 'G-E78BVRJRF5');
+                        `}
+                </Script>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Quicksand:wght@300..700&display=swap"
+                    rel="stylesheet"
+                />
             </head>
             <body className={`antialiased container mx-auto`}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

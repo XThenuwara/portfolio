@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { getMarkdownPosts } from '@/service/blog.service'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 
 export default function BlogCard() {
@@ -24,7 +25,9 @@ export default function BlogCard() {
     }, [])
 
     if (loading) {
-        return <div>Loading...</div>
+        return <div className='flex justify-center items-center mt-12'>
+        <LoadingSpinner/>
+      </div>
     }
 
     if (!latestPost) {

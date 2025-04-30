@@ -3,17 +3,18 @@ import React, { useState, useEffect } from "react";
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 const HackerText = ({ value }: { value: string }) => {
-  const [iteration, setIteration] = useState(0);
-  const [text, setText] = useState(value);
+  const [iteration, setIteration] = useState<number>(0);
+  const [text, setText] = useState<string>(value);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   useEffect(() => {
-    let interval: any = null;
+    if (!isAnimating) return;
 
-    interval = setInterval(() => {
-      setText((text: any) =>
-        text
+    const interval = setInterval(() => {
+      setText((currentText) =>
+        currentText
           .split("")
-          .map((letter: any, index: any) => {
+          .map((letter, index) => {
             if (index < iteration) {
               return value[index];
             }
@@ -22,14 +23,25 @@ const HackerText = ({ value }: { value: string }) => {
           .join("")
       );
 
-      setIteration(iteration + 1 /10);
+      setIteration((prev) => {
+        if (prev >= value.length) {
+          setIsAnimating(false);
+          return 0;
+        }
+        return prev + 1/10;
+      });
     }, 30);
 
     return () => clearInterval(interval);
-  }, [iteration, value]);
+  }, [iteration, value, isAnimating]);
+
+  const handleMouseEnter = () => {
+    setIteration(0);
+    setIsAnimating(true);
+  };
 
   return (
-    <h1 className="text-4xl" onMouseEnter={() => setIteration(0)}>
+    <h1 className="text-4xl" onMouseEnter={handleMouseEnter}>
       {text}
     </h1>
   );

@@ -84,10 +84,10 @@ export default function Home() {
                     <ReactGridCard key="1" id="1">
                         <ProfileCard />
                     </ReactGridCard>
-                    <ReactGridCard key="2" id="2" isExpandable expandedContent={<ExperienceTimeline/>} className="p-2 md:p-4 lg:p-6">
+                    <ReactGridCard key="2" id="2" isExpandable expandedContent={<ExperienceTimeline/>} className="p-4 md:p-4 lg:p-6">
                         <ExperienceCard />
                     </ReactGridCard>
-                    <ReactGridCard key="3" id="3" isExpandable className="p-2 md:p-4 lg:p-6">
+                    <ReactGridCard key="3" id="3" isExpandable className="p-4 md:p-4 lg:p-6">
                         <GithubStatsCard />
                     </ReactGridCard>
                     <ReactGridCard key="4" id="4" isExpandable>
@@ -96,7 +96,7 @@ export default function Home() {
                     <ReactGridCard key="5" id="5" isExpandable className="p-2 md:p-4 lg:p-6">
                         <ProjectsCard />
                     </ReactGridCard>
-                    <ReactGridCard key="6" id="6" isExpandable className="p-2 md:p-4 lg:p-6">
+                    <ReactGridCard key="6" id="6" isExpandable className="p-4 md:p-4 lg:p-6">
                         <BlogCard/>
                     </ReactGridCard>
                     <ReactGridCard key="7" id="7" isExpandable className="p-2 md:p-4 lg:p-6 h-full">

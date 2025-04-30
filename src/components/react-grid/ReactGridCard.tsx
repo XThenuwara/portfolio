@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { X } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -20,16 +20,10 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
     ({ className, children, expandedContent, header, id, title, description, isExpandable = false, ...props }, ref) => {
         const [isExpanded, setIsExpanded] = useState(false)
 
+        // Optimize body scroll lock with a single effect
         useEffect(() => {
-            if (isExpanded) {
-                document.body.style.overflow = 'hidden'
-            } else {
-                document.body.style.overflow = 'unset'
-            }
-
-            return () => {
-                document.body.style.overflow = 'unset'
-            }
+            document.body.style.overflow = isExpanded ? 'hidden' : 'unset'
+            return () => { document.body.style.overflow = 'unset' }
         }, [isExpanded])
 
         const handleClick = () => {
@@ -40,14 +34,17 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
 
         const springTransition = {
             type: "spring",
-            stiffness: 250,
-            damping: 20,
+            stiffness: 300,
+            damping: 30,
             mass: 0.2
         }
 
         return (
             <>
-                <motion.div initial={false} className={cn(isExpanded ? 'invisible' : 'visible')}>
+                <motion.div 
+                    initial={false} 
+                    className={cn(isExpanded ? 'invisible' : 'visible')}
+                >
                     <motion.div
                         layoutId={`card-${id}`}
                         onClick={handleClick}
@@ -63,8 +60,8 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                         <Card
                             ref={ref}
                             className={cn(
-                                'h-full overflow-hidden rounded-sm border bg-card text-card-foreground shadow transition-all duration-500',
-                                isExpandable && 'hover:shadow-lg hover:scale-[1.02]',
+                                'h-full overflow-hidden rounded-sm border bg-card text-card-foreground shadow',
+                                isExpandable && 'hover:shadow-lg hover:scale-[1.005] !transition-all duration-300',
                                 className
                             )}
                             {...props}
@@ -79,20 +76,26 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                 <AnimatePresence>
                     {isExpanded && isExpandable && (
                         <>
+                            {/* Backdrop overlay */}
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setIsExpanded(false)}
-                                className="fixed inset-0 z-40 bg-gray-700/25 dark:bg-gray-700/25 backdrop-blur-xs overflow-hidden"
-                                transition={{ duration: 0.1, ease: "easeInOut" }}
+                                className="fixed inset-0 z-40 bg-gray-700/25 dark:bg-gray-700/25 backdrop-blur-sm overflow-hidden"
+                                transition={{ duration: 0.15, ease: "easeInOut" }}
                             />
+                            
+                            {/* Modal container */}
                             <motion.div
                                 layoutId={`card-${id}`}
-                                className="fixed z-50 w-[90vw] max-w-5xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden glass"
+                                className="fixed z-50 w-[90vw] max-w-5xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden"
                                 transition={springTransition}
                             >
-                                <Card className="flex flex-col max-h-[90vh] glass">
+                                <Card className={cn(
+                                    "flex flex-col max-h-[90vh] !bg-background/25 backdrop-blur-md rounded-lg shadow-xl",
+                                    className
+                                )}>
                                     <motion.div layoutId={`header-${id}`} transition={springTransition} className="flex-none">
                                         <CardHeader>
                                             <div className="flex justify-between items-start">
@@ -113,7 +116,7 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                                     initial={{ opacity: 0, scale: 0.9 }}
                                                     animate={{ opacity: 1, scale: 1 }}
                                                     exit={{ opacity: 0, scale: 0.9 }}
-                                                    transition={{ duration: 0.1 }}
+                                                    transition={{ duration: 0.15 }}
                                                 >
                                                     <Button variant="ghost" size="icon" onClick={() => setIsExpanded(false)} className="h-8 w-8">
                                                         <X className="h-4 w-4" />
@@ -128,7 +131,7 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                         className="flex-1 min-h-0 overflow-y-auto"
                                         transition={springTransition}
                                     >
-                                        <CardContent className="h-full">{expandedContent || children}</CardContent>
+                                        <CardContent className="h-full p-2">{expandedContent || children}</CardContent>
                                     </motion.div>
                                 </Card>
                             </motion.div>

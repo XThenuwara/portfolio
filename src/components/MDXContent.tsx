@@ -9,18 +9,8 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { Dialog, DialogContent } from './ui/dialog'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { useTheme } from 'next-themes'
-import { oneDark, oneLight,    vscDarkPlus, 
-    vs, 
-    dracula, 
-    atomDark, 
-    duotoneDark, 
-    duotoneLight,
-    nightOwl,
-    oceanicNext,
-    okaidia,
-    solarizedlight,
-    tomorrow,
-    twilight } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { oneLight, atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 
 interface MDXContentProps {
     content: string
@@ -69,17 +59,17 @@ export default function MDXContent({ content }: MDXContentProps) {
     }
 
     return (
-        <div className="mdx-content prose max-w-none bg-background dark:bg-card rounded-md p-2 md:p-4 lg:p-6 dark:font-medium">
+        <div className="mdx-content prose max-w-none bg-background dark:bg-card rounded-md p-2 md:p-4 lg:p-6 dark:font-medium text-wrap">
             <MDXRemote
                 {...mdxSource}
                 components={{
-                    h1: ({ children }) => <h1 className="text-4xl font-bold my-4">{children}</h1>,
-                    h2: ({ children }) => <h2 className="text-3xl font-bold my-3 mt-12">{children}</h2>,
-                    h3: ({ children }) => <h3 className="text-2xl font-bold my-2 mt-6">{children}</h3>,
-                    p: ({ children }) => <p className="my-4 leading-relaxed">{children}</p>,
+                    h1: ({ children }) => <h1 className="text-3xl md:text-4xl font-bold my-4">{children}</h1>,
+                    h2: ({ children }) => <h2 className="text-2xl md:text-3xl font-bold my-3 mt-12">{children}</h2>,
+                    h3: ({ children }) => <h3 className="text-xl md:text-2xl font-bold my-2 mt-6">{children}</h3>,
+                    p: ({ children }) => <p className="my-4 leading-relaxed md:text-lg">{children}</p>,
                     ul: ({ children }) => <ul className="list-disc pl-8 my-4">{children}</ul>,
                     ol: ({ children }) => <ol className="list-decimal pl-8 my-4">{children}</ol>,
-                    li: ({ children }) => <li className="my-2">{children}</li>,
+                    li: ({ children }) => <li className="my-2 text-wrap break-all">{children}</li>,
                     blockquote: ({ children }) => <blockquote className="border-l-4 border-gray-300 pl-4 italic">{children}</blockquote>,
                     code: ({ className, children }) => {
                         const content = String(children).trim()
@@ -87,7 +77,11 @@ export default function MDXContent({ content }: MDXContentProps) {
                         const language = className ? className.replace('language-', '') : ''
 
                         if (words <= 10 && !language) {
-                            return <pre className="inline-block px-2 py-0  bg-gray-100 dark:bg-gray-800 border font-semibold rounded-full font-mono text-sm">{children}</pre>
+                            return (
+                                <pre className="inline-block px-2 py-0  bg-gray-100 dark:bg-gray-800 border font-semibold rounded-full font-mono text-sm">
+                                    {children}
+                                </pre>
+                            )
                         }
 
                         return (
@@ -111,10 +105,34 @@ export default function MDXContent({ content }: MDXContentProps) {
 
                         return (
                             <div className="w-full h-full my-9">
-                                <img src={src} alt={alt} className="max-h-72 md:object-cover rounded-lg cursor-pointer" onClick={() => setIsOpen(true)} />
+                                <img
+                                    src={src}
+                                    alt={alt}
+                                    className="max-h-72 min-h-32 object-contain rounded-lg cursor-pointer"
+                                    onClick={() => setIsOpen(true)}
+                                />
                                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                                    <DialogContent className="min-w-[90vw] min-h-[90vh]">
-                                        <img src={src} alt={alt} className="w-full h-full object-contain" />
+                                    <DialogContent className="min-w-[90vw] min-h-[90vh] p-0 overflow-hidden">
+                                        <TransformWrapper
+                                            initialScale={1}
+                                            minScale={0.5}
+                                            maxScale={4}
+                                            centerOnInit
+                                            doubleClick={{ mode: 'reset' }}
+                                            wheel={{ step: 0.1 }}
+                                            pinch={{ step: 5 }}
+                                        >
+                                            <TransformComponent
+                                                wrapperClass="w-full h-full"
+                                                contentClass="w-full h-full flex items-center justify-center"
+                                            >
+                                                <img 
+                                                    src={src} 
+                                                    alt={alt} 
+                                                    className="w-full h-full object-contain"
+                                                />
+                                            </TransformComponent>
+                                        </TransformWrapper>
                                     </DialogContent>
                                 </Dialog>
                             </div>
