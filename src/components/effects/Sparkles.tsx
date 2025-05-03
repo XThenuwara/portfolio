@@ -36,14 +36,14 @@ const Sparkles = (props: ParticlesProps) => {
             controls.start({
                 opacity: 1,
                 transition: {
-                    duration: 1,
+                    duration: 0.3,
                 },
             })
         }
     }
 
     return (
-        <motion.div animate={controls} className={cn('opacity-0 relative h-full', className)}>
+        <motion.div initial={{ opacity: 0 }} animate={controls} className={cn('relative h-full', className)}>
             {init && (
                 <Particles
                     id={id || 'tsparticles'}

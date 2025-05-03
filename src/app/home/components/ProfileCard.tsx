@@ -8,34 +8,41 @@ import { ThemeToggler } from '@/components/ThemeToggler'
 import data from '@/data/data.json'
 import Sparkles from '@/components/effects/Sparkles'
 
+const SocialLink = React.memo(({ url, icon, title }: { url: string; icon: string; title: string }) => (
+    <Link href={url} target="_blank" rel="noopener noreferrer" aria-label={title}>
+        <Button size="icon" variant="outline" className="rounded-full relative z-20 glass cursor-pointer">
+            <Icon icon={icon} width="24" className="text-default-400" />
+        </Button>
+    </Link>
+))
+
+SocialLink.displayName = 'SocialLink'
+
 const ProfileCard = () => {
+    const socialLinks = React.useMemo(() => data.profile.social, [])
+    const email = React.useMemo(() => data.profile.contact.email, [])
+    const { name, title } = data.profile
+
     return (
-        <Sparkles className="absolute inset-0 -z-10">
-            <div className="flex flex-col justify-between h-full relative z-10 p-2 md:p-4 lg:p-6">
+        <div className="relative h-full w-full">
+            <div className="absolute inset-0 pointer-events-none">
+                <Sparkles />
+            </div>
+            <div className="flex flex-col justify-between h-full z-10 p-2 md:p-4 lg:p-6">
                 <div className="flex justify-end gap-2 items-center">
-                    {data.profile.social.map((link, index) => (
-                        <Link href={link.url} key={index} target="_blank">
-                            <Button size="icon" variant="outline" className="rounded-full relative z-20 glass cursor-pointer">
-                                <Icon icon={link.icon} width="24" className="text-default-400" />
-                            </Button>
-                        </Link>
+                    {socialLinks.map((link, index) => (
+                        <SocialLink key={index} url={link.url} icon={link.icon} title={`Connect with ${name} on ${link.url.split('.')[1]}`} />
                     ))}
-                    {data.profile.contact.email && (
-                        <Link href={`mailto:${data.profile.contact.email}`}>
-                            <Button size="icon" variant="outline" className="rounded-full relative z-20 glass cursor-pointer">
-                                <Icon icon="mingcute:mail-line" width="24" className="text-default-400" />
-                            </Button>
-                        </Link>
-                    )}
+                    {email && <SocialLink url={`mailto:${email}`} icon="mingcute:mail-line" title={`Send email to ${name}`} />}
                     <ThemeToggler />
                 </div>
-                <div>
-                    <h3 className="text-6xl">{data.profile.name}</h3>
-                    <span className="text-gray-500 font-semibold">{data.profile.title}</span>
+                <div className="mt-auto">
+                    <h1 className="text-6xl font-bold tracking-tight">{name}</h1>
+                    <span className="text-gray-500 dark:text-gray-400 font-semibold">{title}</span>
                 </div>
             </div>
-        </Sparkles>
+        </div>
     )
 }
 
-export default ProfileCard
+export default React.memo(ProfileCard)

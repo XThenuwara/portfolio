@@ -4,7 +4,6 @@ import MDXContent from '@/components/MDXContent'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import data from '@/data/data.json'
 import LoadingSpinner from '@/components/LoadingSpinner'
-import nextConfig from '@/../next.config'
 
 interface BlogPostProps {
     id?: string
@@ -16,7 +15,6 @@ export default function BlogPost({ id }: BlogPostProps) {
     const [error, setError] = useState<string | null>(null)
 
     const fetchPost = useCallback(async () => {
-        console.log('📡 Starting fetchPost with ID:', id)
         if (!id) {
             setError('No post ID provided')
             setLoading(false)
@@ -114,7 +112,7 @@ export default function BlogPost({ id }: BlogPostProps) {
                 <Icon icon="tabler:topology-star" width="32" />
                 <h1 className="text-4xl font-bold">WebLOG</h1>
             </a>
-            <div className="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-gray-900 p-1 rounded-lg shadow-lg">
+            <div className="prose prose-lg dark:prose-invert max-w-none bg-white dark:bg-neutral-800 p-1 rounded-lg shadow-lg">
                 <MDXContent content={post.content} />
             </div>
         </div>

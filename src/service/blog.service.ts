@@ -1,6 +1,19 @@
 import data from '@/data/data.json'
 
-export async function getMarkdownPosts() {
+export interface Post {
+    year: string
+    fileName: string
+    title: string
+    description: string
+    index: string
+    path: string
+}
+
+interface GithubResponse {
+    content: string
+}
+
+export async function getMarkdownPosts(): Promise<Post[]> {
     const repoOwner = data.blog.owner
     const repoName = data.blog.repo
     const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/index.md`
@@ -14,41 +27,50 @@ export async function getMarkdownPosts() {
         })
 
         if (!response.ok) {
-            throw new Error('Failed to fetch posts')
+            throw new Error(`Failed to fetch posts: ${response.status} ${response.statusText}`)
         }
 
-        const data = await response.json()
+        const data = await response.json() as GithubResponse
         const decodedContent = atob(data.content.replace(/\n/g, ''))
-        const lines = decodedContent.split('\n')
-        const posts = []
+        const lines = decodedContent.split('\n').filter(Boolean) // Remove empty lines
+        const posts: Post[] = []
         let currentYear = ''
 
         for (const line of lines) {
+            if (!line.trim()) continue
+
             if (line.startsWith('#')) {
                 currentYear = line.replace('#', '').trim()
                 continue
             }
 
             if (line.includes(' - ')) {
-                const [fileName, title, description] = line.split(' - ')
+                const parts = line.split(' - ').map(part => part.trim())
+                if (parts.length < 3) continue
+                const [fileName, title, description] = parts
                 const [index] = fileName.split('.')
+
+                if (!currentYear || !index || !fileName || !title) continue;
+
                 posts.push({
                     year: currentYear,
-                    index: index,
-                    title: title.trim(),
-                    description: description.trim(),
-                    fileName: fileName.trim(),
-                    path: `${currentYear}/${fileName.trim()}`,
+                    index,
+                    title,
+                    description: description || '',
+                    fileName,
+                    path: `${currentYear}/${fileName}`,
                 })
             }
         }
 
         return posts.sort((a, b) => {
-            if (a.year !== b.year) return b.year.localeCompare(a.year)
-            return b.index.localeCompare(a.index)
+            const yearDiff = Number(b.year) - Number(a.year)
+            if (yearDiff !== 0) return yearDiff
+
+            return Number(b.index) - Number(a.index)
         })
     } catch (error) {
-        console.error('Error fetching posts:', error)
+        console.error('Error fetching posts:', error instanceof Error ? error.message : 'Unknown error')
         return []
     }
 }

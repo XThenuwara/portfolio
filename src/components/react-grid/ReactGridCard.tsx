@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { X } from 'lucide-react'
@@ -16,35 +16,41 @@ interface ReactGridCardProps extends React.HTMLAttributes<HTMLDivElement> {
     isExpandable?: boolean
 }
 
+const springTransition = {
+    type: 'spring',
+    stiffness: 300,
+    damping: 30,
+    mass: 0.2,
+} as const
+
 const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
     ({ className, children, expandedContent, header, id, title, description, isExpandable = false, ...props }, ref) => {
         const [isExpanded, setIsExpanded] = useState(false)
 
-        // Optimize body scroll lock with a single effect
-        useEffect(() => {
-            document.body.style.overflow = isExpanded ? 'hidden' : 'unset'
-            return () => { document.body.style.overflow = 'unset' }
-        }, [isExpanded])
+        const toggleScrollLock = useCallback((lock: boolean) => {
+            document.body.style.overflow = lock ? 'hidden' : 'unset'
+        }, [])
 
-        const handleClick = () => {
+        useEffect(() => {
+            if (isExpanded) {
+                toggleScrollLock(true)
+                return () => toggleScrollLock(false)
+            }
+        }, [isExpanded, toggleScrollLock])
+
+        const handleClick = useCallback(() => {
             if (isExpandable) {
                 setIsExpanded(true)
             }
-        }
+        }, [isExpandable])
 
-        const springTransition = {
-            type: "spring",
-            stiffness: 300,
-            damping: 30,
-            mass: 0.2
-        }
+        const handleClose = useCallback(() => {
+            setIsExpanded(false)
+        }, [])
 
         return (
             <>
-                <motion.div 
-                    initial={false} 
-                    className={cn(isExpanded ? 'invisible' : 'visible')}
-                >
+                <motion.div initial={false} className={cn(isExpanded ? 'invisible' : 'visible')}>
                     <motion.div
                         layoutId={`card-${id}`}
                         onClick={handleClick}
@@ -54,20 +60,20 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                         exit={{ opacity: 0, y: -10 }}
                         transition={{
                             ...springTransition,
-                            opacity: { duration: 0.1 }
+                            opacity: { duration: 0.1 },
                         }}
                     >
                         <Card
                             ref={ref}
                             className={cn(
-                                'h-full overflow-hidden rounded-sm border bg-card text-card-foreground shadow',
-                                isExpandable && 'hover:shadow-lg hover:scale-[1.005] !transition-all duration-300',
+                                'h-full overflow-hidden rounded-sm border bg-card text-card-foreground shadow will-change-transform',
+                                isExpandable && 'hover:shadow-lg hover:scale-[1.005] !transition-transform duration-300',
                                 className
                             )}
                             {...props}
                         >
-                            <motion.div layoutId={`content-${id}`} transition={springTransition}>
-                                <CardContent className="p-0">{children}</CardContent>
+                            <motion.div layoutId={`content-${id}`} transition={springTransition} className="h-full">
+                                <CardContent className="p-0 h-full">{children}</CardContent>
                             </motion.div>
                         </Card>
                     </motion.div>
@@ -76,26 +82,21 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                 <AnimatePresence>
                     {isExpanded && isExpandable && (
                         <>
-                            {/* Backdrop overlay */}
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                onClick={() => setIsExpanded(false)}
+                                onClick={handleClose}
                                 className="fixed inset-0 z-40 bg-gray-700/25 dark:bg-gray-700/25 backdrop-blur-sm overflow-hidden"
-                                transition={{ duration: 0.15, ease: "easeInOut" }}
+                                transition={{ duration: 0.15 }}
                             />
-                            
-                            {/* Modal container */}
+
                             <motion.div
                                 layoutId={`card-${id}`}
-                                className="fixed z-50 w-[90vw] max-w-5xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden"
+                                className="fixed z-50 w-[90vw] max-w-5xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
                                 transition={springTransition}
                             >
-                                <Card className={cn(
-                                    "flex flex-col max-h-[90vh] !bg-background/25 backdrop-blur-md rounded-lg shadow-xl",
-                                    className
-                                )}>
+                                <Card className={cn('flex flex-col max-h-[90vh] !bg-background/25 backdrop-blur-md rounded-lg shadow-xl', className)}>
                                     <motion.div layoutId={`header-${id}`} transition={springTransition} className="flex-none">
                                         <CardHeader>
                                             <div className="flex justify-between items-start">
@@ -104,10 +105,7 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                                         <CardTitle className="text-2xl">{title}</CardTitle>
                                                     </motion.div>
                                                     {description && (
-                                                        <motion.div 
-                                                            layoutId={`desc-${id}`}
-                                                            transition={springTransition}
-                                                        >
+                                                        <motion.div layoutId={`desc-${id}`} transition={springTransition}>
                                                             <CardDescription className="mt-2">{description}</CardDescription>
                                                         </motion.div>
                                                     )}
@@ -118,7 +116,7 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                                     exit={{ opacity: 0, scale: 0.9 }}
                                                     transition={{ duration: 0.15 }}
                                                 >
-                                                    <Button variant="ghost" size="icon" onClick={() => setIsExpanded(false)} className="h-8 w-8">
+                                                    <Button variant="ghost" size="icon" onClick={handleClose} className="h-8 w-8">
                                                         <X className="h-4 w-4" />
                                                         <span className="sr-only">Close</span>
                                                     </Button>
@@ -126,11 +124,7 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                             </div>
                                         </CardHeader>
                                     </motion.div>
-                                    <motion.div 
-                                        layoutId={`content-${id}`} 
-                                        className="flex-1 min-h-0 overflow-y-auto"
-                                        transition={springTransition}
-                                    >
+                                    <motion.div layoutId={`content-${id}`} className="flex-1 min-h-0 overflow-y-auto" transition={springTransition}>
                                         <CardContent className="h-full p-2">{expandedContent || children}</CardContent>
                                     </motion.div>
                                 </Card>
@@ -145,4 +139,4 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
 
 ReactGridCard.displayName = 'ReactGridCard'
 
-export default ReactGridCard
+export default React.memo(ReactGridCard)

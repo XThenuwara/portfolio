@@ -193,3 +193,7 @@ html {
 .syntax-highlight code {
     background-color: transparent !important;
 }
+
+.grid-container .react-resizable-handle {
+    display: none !important;
+}
