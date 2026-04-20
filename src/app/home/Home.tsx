@@ -46,38 +46,41 @@ export default function Home() {
     const cols = { lg: 4, md: 4, sm: 2 }
     const rowHeight = useResponsiveRowHeight(breakpoints)
 
-    const memoizedLayouts = React.useMemo<Layouts>(() => ({
-        sm: [
-            { w: 2, h: 2, x: 0, y: 0, i: '1', static: true },
-            { w: 2, h: 1, x: 0, y: 3, i: '2', static: true },
-            { w: 2, h: 1, x: 0, y: 3, i: '3', static: true },
-            { w: 1, h: 2, x: 1, y: 4, i: '4', static: true },
-            { w: 1, h: 2, x: 0, y: 4, i: '5', static: true },
-            { w: 2, h: 1, x: 0, y: 6, i: '6', static: true },
-            { w: 2, h: 1, x: 0, y: 7, i: '7', static: true },
-            { w: 2, h: 1, x: 0, y: 2, i: '8', static: true },
-        ],
-        md: [
-            { i: '1', x: 0, y: 0, w: 2, h: 2, static: true },
-            { i: '2', x: 2, y: 0, w: 1, h: 1, static: true },
-            { i: '3', x: 3, y: 3, w: 1, h: 1, static: true },
-            { i: '4', x: 3, y: 0, w: 1, h: 2, static: true },
-            { i: '5', x: 2, y: 1, w: 1, h: 2, static: true },
-            { i: '6', x: 3, y: 2, w: 1, h: 1, static: true },
-            { i: '7', x: 0, y: 2, w: 2, h: 1, static: true },
-            { i: '8', x: 0, y: 3, w: 3, h: 1, static: true },
-        ],
-        lg: [
-            { i: '1', x: 0, y: 0, w: 2, h: 1, static: true },
-            { i: '2', x: 2, y: 0, w: 1, h: 1, static: true },
-            { i: '3', x: 0, y: 1, w: 1, h: 1, static: true },
-            { i: '4', x: 3, y: 0, w: 1, h: 2, static: true },
-            { i: '5', x: 2, y: 1, w: 1, h: 2, static: true },
-            { i: '6', x: 3, y: 2, w: 1, h: 1, static: true },
-            { i: '7', x: 0, y: 2, w: 2, h: 1, static: true },
-            { i: '8', x: 1, y: 1, w: 1, h: 1, static: true },
-        ],
-    }), [])
+    const memoizedLayouts = React.useMemo<Layouts>(
+        () => ({
+            sm: [
+                { w: 2, h: 2, x: 0, y: 0, i: '1', static: true },
+                { w: 2, h: 1, x: 0, y: 3, i: '2', static: false, isResizable: false, isDraggable: false },
+                { w: 2, h: 1, x: 0, y: 3, i: '3', static: false, isResizable: false, isDraggable: false },
+                { w: 1, h: 2, x: 1, y: 4, i: '4', static: true },
+                { w: 1, h: 2, x: 0, y: 4, i: '5', static: true },
+                { w: 2, h: 1, x: 0, y: 6, i: '6', static: true },
+                { w: 2, h: 1, x: 0, y: 7, i: '7', static: true },
+                { w: 2, h: 1, x: 0, y: 2, i: '8', static: true },
+            ],
+            md: [
+                { i: '1', x: 0, y: 0, w: 2, h: 2, static: true },
+                { i: '2', x: 2, y: 0, w: 1, h: 1, static: true },
+                { i: '3', x: 3, y: 3, w: 1, h: 1, static: true },
+                { i: '4', x: 3, y: 0, w: 1, h: 2, static: true },
+                { i: '5', x: 2, y: 1, w: 1, h: 2, static: true },
+                { i: '6', x: 3, y: 2, w: 1, h: 1, static: true },
+                { i: '7', x: 0, y: 2, w: 2, h: 1, static: true },
+                { i: '8', x: 0, y: 3, w: 3, h: 1, static: true },
+            ],
+            lg: [
+                { i: '1', x: 0, y: 0, w: 2, h: 1, static: true },
+                { i: '2', x: 2, y: 0, w: 1, h: 1, static: true },
+                { i: '3', x: 0, y: 1, w: 1, h: 1, static: true },
+                { i: '4', x: 3, y: 0, w: 1, h: 2, static: true },
+                { i: '5', x: 2, y: 1, w: 1, h: 2, static: true },
+                { i: '6', x: 3, y: 2, w: 1, h: 1, static: true },
+                { i: '7', x: 0, y: 2, w: 2, h: 1, static: true },
+                { i: '8', x: 1, y: 1, w: 1, h: 1, static: true },
+            ],
+        }),
+        []
+    )
 
     return (
         <main className="min-h-screen transition-all" suppressHydrationWarning>
@@ -94,6 +97,7 @@ export default function Home() {
                     className="grid-container"
                     useCSSTransforms={true}
                     isResizable={false}
+                    // onLayoutChange={(layout) => console.log(layout)}
                 >
                     <ReactGridCard key="1" id="1">
                         <ProfileCard />

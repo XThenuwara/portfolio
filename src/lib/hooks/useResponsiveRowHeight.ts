@@ -1,10 +1,13 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useLayoutEffect, useCallback } from 'react'
 
 interface BreakPoints {
   lg: number
   md: number
   sm: number
 }
+
+// Use useLayoutEffect on the client to avoid flash; fall back to useEffect on server
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 export const useResponsiveRowHeight = (breakpoints: BreakPoints) => {
   const getRowHeight = useCallback((width: number) => {
@@ -14,12 +17,15 @@ export const useResponsiveRowHeight = (breakpoints: BreakPoints) => {
     return 280
   }, [breakpoints.sm, breakpoints.md, breakpoints.lg])
 
-  const [rowHeight, setRowHeight] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return getRowHeight(window.innerWidth)
-    }
-    return 280
-  })
+  // Default to 200 (smallest/mobile value) for SSR so the server HTML is
+  // closer to what mobile clients actually need, reducing layout jump on hydration.
+  const [rowHeight, setRowHeight] = useState(200)
+
+  // Run synchronously before the browser paints to set the correct height
+  // immediately on mount — prevents the flash from SSR default → real value.
+  useIsomorphicLayoutEffect(() => {
+    setRowHeight(getRowHeight(window.innerWidth))
+  }, [getRowHeight])
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout
@@ -27,14 +33,12 @@ export const useResponsiveRowHeight = (breakpoints: BreakPoints) => {
     const handleResize = () => {
       clearTimeout(timeoutId)
       timeoutId = setTimeout(() => {
-        const currentWidth = window.innerWidth
-        setRowHeight(getRowHeight(currentWidth))
+        setRowHeight(getRowHeight(window.innerWidth))
       }, 100)
     }
 
-    handleResize()
     window.addEventListener('resize', handleResize, { passive: true })
-    
+
     return () => {
       window.removeEventListener('resize', handleResize)
       clearTimeout(timeoutId)
