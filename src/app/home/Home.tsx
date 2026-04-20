@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout'
+import { Layouts, Responsive, WidthProvider } from 'react-grid-layout'
 import { useResponsiveRowHeight } from '@/lib/hooks/useResponsiveRowHeight'
 import ReactGridCard from '@/components/react-grid/ReactGridCard'
 import ProfileCard from '@/app/home/components/ProfileCard'
@@ -11,13 +11,10 @@ import ProjectsCard from '@/app/home/components/ProjectsCard'
 import QuoteCard from '@/app/home/components/QuoteCard'
 import ExperienceTimeline from '@/app/home/components/ExperienceTimeline'
 import dynamic from 'next/dynamic'
-import LoadingSpinner from '@/components/LoadingSpinner'
 
-interface GridState {
-    static: boolean
-    isResizable: boolean
-    isDraggable: boolean
-}
+// Grid CSS — loaded only on the home page, not globally
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
@@ -45,17 +42,11 @@ const BlogCard = dynamic(() => import('@/app/home/components/BlogCard'), {
 })
 
 export default function Home() {
-    const [mounted, setMounted] = React.useState(false)
-    const [editable] = React.useState<GridState>({
-        static: true,
-        isResizable: false,
-        isDraggable: false,
-    })
     const breakpoints = { lg: 996, md: 768, sm: 578 }
     const cols = { lg: 4, md: 4, sm: 2 }
     const rowHeight = useResponsiveRowHeight(breakpoints)
 
-    const layouts: Layouts = {
+    const memoizedLayouts = React.useMemo<Layouts>(() => ({
         sm: [
             { w: 2, h: 2, x: 0, y: 0, i: '1', static: true },
             { w: 2, h: 1, x: 0, y: 3, i: '2', static: true },
@@ -86,20 +77,7 @@ export default function Home() {
             { i: '7', x: 0, y: 2, w: 2, h: 1, static: true },
             { i: '8', x: 1, y: 1, w: 1, h: 1, static: true },
         ],
-    }
-
-    const memoizedLayouts = React.useMemo(
-        () => ({
-            sm: layouts.sm,
-            md: layouts.md,
-            lg: layouts.lg,
-        }),
-        [editable.static, layouts.sm, layouts.md, layouts.lg]
-    )
-
-    React.useEffect(() => {
-        setMounted(true)
-    }, [])
+    }), [])
 
     return (
         <main className="min-h-screen transition-all" suppressHydrationWarning>

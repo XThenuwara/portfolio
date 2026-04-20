@@ -6,8 +6,6 @@ import Footer from '@/components/Footer'
 // CSS
 import './globals.css'
 import './custom.css'
-import 'react-grid-layout/css/styles.css'
-import 'react-resizable/css/styles.css'
 import Script from 'next/script'
 
 export const metadata: Metadata = data.metadata
@@ -17,7 +15,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <html lang="en" suppressHydrationWarning>
             <head>
                 {/* <script src="https://unpkg.com/react-scan/dist/auto.global.js" /> */}
-                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-E78BVRJRF5" />
+                <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-E78BVRJRF5" />
                 <Script id="google-analytics">
                         {` 
                             window.dataLayer = window.dataLayer || [];
@@ -27,8 +25,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                             gtag('config', 'G-E78BVRJRF5');
                         `}
                 </Script>
+                {/* Preconnect to external origins */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://api.github.com" />
+                <link rel="preconnect" href="https://github-contributions-api.jogruber.de" />
+                <link rel="dns-prefetch" href="https://www.google-analytics.com" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Quicksand:wght@300..700&display=swap"
                     rel="stylesheet"
