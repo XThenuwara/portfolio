@@ -36,7 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                     rel="stylesheet"
                 />
             </head>
-            <body className={`antialiased container mx-auto`}>
+            <body className="antialiased container mx-auto" suppressHydrationWarning>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     <div className="transition-colors duration-100 ease-in-out pb-8 w-full">
                         <section className="my-8 h-full">{children}</section>
