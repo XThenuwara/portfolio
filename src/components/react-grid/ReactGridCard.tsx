@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 interface ReactGridCardProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string
-    header?: React.ReactNode
     children: React.ReactNode
     expandedContent?: React.ReactNode
     id: string
@@ -24,7 +23,7 @@ const springTransition = {
 } as const
 
 const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
-    ({ className, children, expandedContent, header, id, title, description, isExpandable = false, ...props }, ref) => {
+    ({ className, children, expandedContent, id, title, description, isExpandable = false, ...props }, ref) => {
         const [isExpanded, setIsExpanded] = useState(false)
 
         const toggleScrollLock = useCallback((lock: boolean) => {

@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-import Home from './home/Home'
-import Weblog from './weblog/Weblog'
-import BlogPost from './weblog/WeblogPost'
+import dynamic from 'next/dynamic'
+
+const Home = dynamic(() => import('./home/Home'), { ssr: false })
+const Weblog = dynamic(() => import('./weblog/Weblog'), { ssr: false })
+const BlogPost = dynamic(() => import('./weblog/WeblogPost'), { ssr: false })
 
 export default function Page() {
   const [currentRoute, setCurrentRoute] = useState<string>('#/')

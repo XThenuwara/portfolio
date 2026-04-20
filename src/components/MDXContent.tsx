@@ -1,16 +1,33 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote } from 'next-mdx-remote'
-import remarkGfm from 'remark-gfm'
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { Dialog, DialogContent } from './ui/dialog'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { useTheme } from 'next-themes'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneLight, atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { useTheme } from 'next-themes'
+import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript'
+import ts from 'react-syntax-highlighter/dist/esm/languages/prism/typescript'
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx'
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx'
+import css from 'react-syntax-highlighter/dist/esm/languages/prism/css'
+import json from 'react-syntax-highlighter/dist/esm/languages/prism/json'
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash'
+import markdown from 'react-syntax-highlighter/dist/esm/languages/prism/markdown'
+import python from 'react-syntax-highlighter/dist/esm/languages/prism/python'
+import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
+
+SyntaxHighlighter.registerLanguage('javascript', js)
+SyntaxHighlighter.registerLanguage('typescript', ts)
+SyntaxHighlighter.registerLanguage('jsx', jsx)
+SyntaxHighlighter.registerLanguage('tsx', tsx)
+SyntaxHighlighter.registerLanguage('css', css)
+SyntaxHighlighter.registerLanguage('json', json)
+SyntaxHighlighter.registerLanguage('bash', bash)
+SyntaxHighlighter.registerLanguage('markdown', markdown)
+SyntaxHighlighter.registerLanguage('python', python)
+SyntaxHighlighter.registerLanguage('yaml', yaml)
 
 interface MDXContentProps {
     content: string
@@ -19,11 +36,18 @@ interface MDXContentProps {
 export default function MDXContent({ content }: MDXContentProps) {
     const { theme } = useTheme()
 
-    const [mdxSource, setMdxSource] = useState<any>(null)
+    const [mdxSource, setMdxSource] = useState<MDXRemoteSerializeResult | null>(null)
 
     useEffect(() => {
         const compileMDX = async () => {
             try {
+                const [{ serialize }, remarkGfm, rehypeSlug, rehypeAutolinkHeadings] = await Promise.all([
+                    import('next-mdx-remote/serialize'),
+                    import('remark-gfm').then(mod => mod.default),
+                    import('rehype-slug').then(mod => mod.default),
+                    import('rehype-autolink-headings').then(mod => mod.default)
+                ]);
+
                 const mdxSource = await serialize(content, {
                     parseFrontmatter: true,
                     mdxOptions: {

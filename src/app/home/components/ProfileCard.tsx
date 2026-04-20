@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { ThemeToggler } from '@/components/ThemeToggler'
 import data from '@/data/data.json'
-import Sparkles from '@/components/effects/Sparkles'
+import dynamic from 'next/dynamic'
+const Sparkles = dynamic(() => import('@/components/effects/Sparkles'), { ssr: false })
 
 const SocialLink = React.memo(({ url, icon, title }: { url: string; icon: string; title: string }) => (
     <Link href={url} target="_blank" rel="noopener noreferrer" aria-label={title}>
