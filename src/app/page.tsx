@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
+import Home from './home/Home'
 
-const Home = dynamic(() => import('./home/Home'), { ssr: false })
 const Weblog = dynamic(() => import('./weblog/Weblog'), { ssr: false })
 const BlogPost = dynamic(() => import('./weblog/WeblogPost'), { ssr: false })
 

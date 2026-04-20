@@ -51,7 +51,7 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
             <>
                 <motion.div initial={false} className={cn(isExpanded ? 'invisible' : 'visible')}>
                     <motion.div
-                        layoutId={`card-${id}`}
+                        layoutId={isExpanded ? undefined : `card-${id}`}
                         onClick={handleClick}
                         className={cn('cursor-pointer', !isExpandable && 'cursor-default')}
                         initial={{ opacity: 0, y: 10 }}
@@ -93,6 +93,7 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                             <motion.div
                                 layoutId={`card-${id}`}
                                 className="fixed z-50 w-[90vw] max-w-5xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
+                                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.18, ease: 'easeIn' } }}
                                 transition={springTransition}
                             >
                                 <Card className={cn('flex flex-col max-h-[90vh] !bg-background/25 backdrop-blur-md rounded-lg shadow-xl', className)}>

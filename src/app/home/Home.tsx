@@ -21,24 +21,26 @@ interface GridState {
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
-// Dynamic Import
+const GridSkeleton = () => <div className="h-full w-full rounded-sm border bg-card/50 animate-pulse" />
+
+// Dynamic Imports with Skeleton placeholders
 const GithubContributionGraph = dynamic(() => import('@/app/home/components/GithubContributionGraphCard'), {
-    loading: () => <LoadingSpinner />,
+    loading: () => <GridSkeleton />,
     ssr: false,
 })
 
 const GithubStatsCard = dynamic(() => import('@/app/home/components/GithubStatsCard'), {
-    loading: () => <LoadingSpinner />,
+    loading: () => <GridSkeleton />,
     ssr: false,
 })
 
 const Weblog = dynamic(() => import('@/app/weblog/Weblog'), {
-    loading: () => <LoadingSpinner />,
+    loading: () => <div className="w-full h-96 bg-card/20 animate-pulse rounded-lg" />,
     ssr: false,
 })
 
 const BlogCard = dynamic(() => import('@/app/home/components/BlogCard'), {
-    loading: () => <LoadingSpinner />,
+    loading: () => <GridSkeleton />,
     ssr: false,
 })
 
@@ -99,58 +101,50 @@ export default function Home() {
         setMounted(true)
     }, [])
 
-    if (!mounted) {
-        return <div className="min-h-screen" />
-    }
-
     return (
-        <main className="min-h-screen transition-all">
+        <main className="min-h-screen transition-all" suppressHydrationWarning>
             <div className="relative w-full">
-                <React.Suspense fallback={<LoadingSpinner />}>
-                    <ResponsiveGridLayout
-                        layouts={memoizedLayouts}
-                        breakpoints={breakpoints}
-                        cols={cols}
-                        compactType="vertical"
-                        margin={[16, 16]}
-                        rowHeight={rowHeight}
-                        autoSize={true}
-                        containerPadding={[16, 16]}
-                        className="grid-container"
-                        useCSSTransforms={true}
-                        isResizable={false}
-                    >
-                        <ReactGridCard key="1" id="1">
-                            <ProfileCard />
-                        </ReactGridCard>
-                        <ReactGridCard key="2" id="2" isExpandable expandedContent={<ExperienceTimeline />} className="p-4 md:p-4 lg:p-6">
-                            <ExperienceCard />
-                        </ReactGridCard>
-                        <ReactGridCard key="3" id="3" isExpandable className="p-4 md:p-4 lg:p-6">
-                            <GithubStatsCard />
-                        </ReactGridCard>
-                        <ReactGridCard key="4" id="4" isExpandable>
-                            <SkillsCard />
-                        </ReactGridCard>
-                        <ReactGridCard key="5" id="5" isExpandable className="p-2 md:p-4 lg:p-6">
-                            <ProjectsCard />
-                        </ReactGridCard>
-                        <ReactGridCard key="6" id="6" isExpandable className="p-4 md:p-4 lg:p-6">
-                            <BlogCard />
-                        </ReactGridCard>
-                        <ReactGridCard key="7" id="7" isExpandable className="p-2 md:p-4 lg:p-6 h-full">
-                            <GithubContributionGraph />
-                        </ReactGridCard>
-                        <ReactGridCard key="8" id="8" isExpandable className="p-2 md:p-4 lg:p-6 h-full">
-                            <QuoteCard />
-                        </ReactGridCard>
-                    </ResponsiveGridLayout>
-                </React.Suspense>
+                <ResponsiveGridLayout
+                    layouts={memoizedLayouts}
+                    breakpoints={breakpoints}
+                    cols={cols}
+                    compactType="vertical"
+                    margin={[16, 16]}
+                    rowHeight={rowHeight}
+                    autoSize={true}
+                    containerPadding={[16, 16]}
+                    className="grid-container"
+                    useCSSTransforms={true}
+                    isResizable={false}
+                >
+                    <ReactGridCard key="1" id="1">
+                        <ProfileCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="2" id="2" isExpandable expandedContent={<ExperienceTimeline />} className="p-4 md:p-4 lg:p-6">
+                        <ExperienceCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="3" id="3" isExpandable className="p-4 md:p-4 lg:p-6">
+                        <GithubStatsCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="4" id="4" isExpandable>
+                        <SkillsCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="5" id="5" isExpandable className="p-2 md:p-4 lg:p-6">
+                        <ProjectsCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="6" id="6" isExpandable className="p-4 md:p-4 lg:p-6">
+                        <BlogCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="7" id="7" isExpandable className="p-2 md:p-4 lg:p-6 h-full">
+                        <GithubContributionGraph />
+                    </ReactGridCard>
+                    <ReactGridCard key="8" id="8" isExpandable className="p-2 md:p-4 lg:p-6 h-full">
+                        <QuoteCard />
+                    </ReactGridCard>
+                </ResponsiveGridLayout>
             </div>
             <div className="grid-container">
-                <React.Suspense fallback={<LoadingSpinner />}>
-                    <Weblog />
-                </React.Suspense>
+                <Weblog />
             </div>
         </main>
     )
