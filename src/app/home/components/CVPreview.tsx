@@ -24,7 +24,7 @@ const CVPreview = () => {
                         <p className="text-xs text-gray-500 dark:text-gray-400">PDF Document • {cvFilename}</p>
                     </div>
                 </div>
-                <Button 
+                <Button
                     asChild
                     size="sm"
                     className="w-10 h-10 md:w-auto md:h-9 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-semibold group transition-all duration-300 p-0 md:px-4"
@@ -37,7 +37,7 @@ const CVPreview = () => {
             </div>
 
             {/* Preview Section */}
-            <div className="flex-1 w-full h-[60vh] md:h-[75vh] rounded-xl overflow-hidden border border-border bg-[#2c3e50] shadow-2xl relative">
+            <div className="w-full h-[400px] sm:h-[500px] md:h-[100vh] rounded-xl overflow-hidden border border-border shadow-2xl relative shrink-0">
                 <iframe
                     src={`${cvPath}#toolbar=0&view=FitH`}
                     className="absolute inset-0 w-full h-full border-none"
