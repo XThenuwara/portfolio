@@ -23,7 +23,7 @@ const CVDownloadCard = () => {
                     <h2 className="text-xl font-bold tracking-tight">Curriculum Vitae</h2>
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400 max-w-[200px]">
-                    Download my professional resume to see my full experience and skills.
+                    Download the full PDF version.
                 </p>
             </div>
 

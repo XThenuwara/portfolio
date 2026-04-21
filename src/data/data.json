@@ -45,10 +45,44 @@
           "startDate": "2022-05-03",
           "companyList": [
               {
+                  "name": "Liquid Labs Agency",
+                  "logo": "/portfolio/img/company/LL.jpeg",
+                  "position": "Senior Software Engineer",
+                  "duration": "Jul 2025 - Current",
+                  "period": "11m",
+                  "technologies": [
+                      { "name": "Go", "icon": "skill-icons:golang" },
+                      { "name": "Javascript", "icon": "logos:javascript" },
+                      { "name": "Directus", "icon": "simple-icons:directus" },
+                      { "name": "GCP", "icon": "logos:google-cloud" },
+                      { "name": "Cloudflare", "icon": "logos:cloudflare-icon" }
+                  ],
+                  "projects": [
+                      {
+                          "name": "E-commerce Project",
+                          "description": "E-commerce application for a mid-sized Netherlands-based business operating across multiple regions.",
+                          "responsibilities": [
+                              "Full Stack Development (Go / Javascript/ Directus/ Lightspeed)",
+                              "Collaboration with Client & Agile Methodology",
+                              "3rd Party Service Integrations ( Tweakwise/ Klaviyo)",
+                              "Cloud Solutions Implementation ( GCP/ Cloudflare)"
+                          ]
+                      }
+                  ]
+              },
+              {
                   "name": "Allion Technologies",
+                  "logo": "/portfolio/img/company/allion.jpeg",
                   "position": "Software Engineer",
                   "duration": "Jan 2024 - Jan 2025",
                   "period": "1y",
+                  "technologies": [
+                      { "name": "Angular", "icon": "logos:angular-icon" },
+                      { "name": "Spring Boot", "icon": "logos:spring-icon" },
+                      { "name": "MySQL", "icon": "logos:mysql-icon" },
+                      { "name": "AWS", "icon": "logos:aws" },
+                      { "name": "Agile", "icon": "carbon:agile" }
+                  ],
                   "projects": [
                       {
                           "name": "VHCS - Virtual Healthcare Consulting System",
@@ -65,9 +99,20 @@
               },
               {
                   "name": "Fortude",
+                  "logo": "/portfolio/img/company/fortude.png",
                   "position": "Associate Software Engineer",
                   "duration": "May 2022 - Dec 2023",
                   "period": "1y 8m",
+                  "technologies": [
+                      { "name": "React", "icon": "logos:react" },
+                      { "name": "PHP", "icon": "logos:php" },
+                      { "name": "NestJS", "icon": "logos:nestjs" },
+                      { "name": "MongoDB", "icon": "logos:mongodb-icon" },
+                      { "name": "MariaDB", "icon": "logos:mariadb-icon" },
+                      { "name": "Keycloak", "icon": "simple-icons:keycloak" },
+                      { "name": "New Relic", "icon": "logos:new-relic-icon" },
+                      { "name": "Prometheus", "icon": "logos:prometheus" }
+                  ],
                   "projects": [
                       {
                           "name": "SFCS - Shop Flow Control System",
