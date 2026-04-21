@@ -7,12 +7,14 @@ import { Button } from '@/components/ui/button'
 
 const CVPreview = () => {
     const { cvFilename } = data.profile
-    const cvPath = `./cv/${cvFilename}`
+    // Use the basePath from next.config.ts for reliable asset loading
+    const basePath = '/portfolio'
+    const cvPath = `${basePath}/cv/${cvFilename}`
 
     return (
-        <div className="flex flex-col h-full w-full gap-4 p-2 md:p-0">
+        <div className="flex flex-col h-full w-full gap-4 p-0">
             {/* Header Section */}
-            <div className="flex items-center justify-between bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10">
+            <div className="flex items-center justify-between bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="p-2 bg-red-500/10 rounded-lg">
                         <Icon icon="ph:file-pdf-duotone" width="24" height="24" className="text-red-500" />
@@ -35,10 +37,10 @@ const CVPreview = () => {
             </div>
 
             {/* Preview Section */}
-            <div className="flex-1 w-full min-h-[500px] md:min-h-[700px] rounded-xl overflow-hidden border border-border bg-muted shadow-2xl">
+            <div className="flex-1 w-full h-[60vh] md:h-[75vh] rounded-xl overflow-hidden border border-border bg-[#2c3e50] shadow-2xl relative">
                 <iframe
-                    src={`${cvPath}#toolbar=0`}
-                    className="w-full h-full border-none"
+                    src={`${cvPath}#toolbar=0&view=FitH`}
+                    className="absolute inset-0 w-full h-full border-none"
                     title="CV Preview"
                     loading="lazy"
                 />

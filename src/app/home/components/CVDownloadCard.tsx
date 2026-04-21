@@ -8,7 +8,8 @@ import data from '@/data/data.json'
 const CVDownloadCard = () => {
     const { cvFilename, name } = data.profile
 
-    const cvPath = `./cv/${cvFilename}`
+    const basePath = '/portfolio'
+    const cvPath = `${basePath}/cv/${cvFilename}`
 
     return (
         <div className="relative h-full w-full flex flex-col justify-between p-4 md:p-4 lg:p-6 overflow-hidden">
