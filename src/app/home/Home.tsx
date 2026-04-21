@@ -21,12 +21,12 @@ const ResponsiveGridLayout = WidthProvider(Responsive)
 const GridSkeleton = () => <div className="h-full w-full rounded-sm border bg-card/50 animate-pulse" />
 
 // Dynamic Imports with Skeleton placeholders
-const GithubContributionGraph = dynamic(() => import('@/app/home/components/GithubContributionGraphCard'), {
+const CVDownloadCard = dynamic(() => import('@/app/home/components/CVDownloadCard'), {
     loading: () => <GridSkeleton />,
     ssr: false,
 })
 
-const GithubStatsCard = dynamic(() => import('@/app/home/components/GithubStatsCard'), {
+const GithubContributionGraph = dynamic(() => import('@/app/home/components/GithubContributionGraphCard'), {
     loading: () => <GridSkeleton />,
     ssr: false,
 })
@@ -41,6 +41,11 @@ const BlogCard = dynamic(() => import('@/app/home/components/BlogCard'), {
     ssr: false,
 })
 
+const CVPreview = dynamic(() => import('@/app/home/components/CVPreview'), {
+    loading: () => <GridSkeleton />,
+    ssr: false,
+})
+
 export default function Home() {
     const breakpoints = { lg: 996, md: 768, sm: 578 }
     const cols = { lg: 4, md: 4, sm: 2 }
@@ -49,24 +54,24 @@ export default function Home() {
     const memoizedLayouts = React.useMemo<Layouts>(
         () => ({
             sm: [
-                { w: 2, h: 2, x: 0, y: 0, i: '1', static: true },
-                { w: 2, h: 1, x: 0, y: 3, i: '2', static: false, isResizable: false, isDraggable: false },
-                { w: 2, h: 1, x: 0, y: 3, i: '3', static: false, isResizable: false, isDraggable: false },
-                { w: 1, h: 2, x: 1, y: 4, i: '4', static: true },
-                { w: 1, h: 2, x: 0, y: 4, i: '5', static: true },
-                { w: 2, h: 1, x: 0, y: 6, i: '6', static: true },
-                { w: 2, h: 1, x: 0, y: 7, i: '7', static: true },
-                { w: 2, h: 1, x: 0, y: 2, i: '8', static: true },
+                { i: '1', x: 0, y: 0, w: 2, h: 2, static: true },
+                { i: '8', x: 0, y: 2, w: 2, h: 1, static: true },
+                { i: '2', x: 0, y: 3, w: 2, h: 1, static: true },
+                { i: '3', x: 0, y: 4, w: 2, h: 1, static: true },
+                { i: '5', x: 0, y: 5, w: 1, h: 2, static: true },
+                { i: '4', x: 1, y: 5, w: 1, h: 2, static: true },
+                { i: '6', x: 0, y: 7, w: 2, h: 1, static: true },
+                { i: '7', x: 0, y: 8, w: 2, h: 1, static: true },
             ],
             md: [
                 { i: '1', x: 0, y: 0, w: 2, h: 2, static: true },
                 { i: '2', x: 2, y: 0, w: 1, h: 1, static: true },
-                { i: '3', x: 3, y: 3, w: 1, h: 1, static: true },
                 { i: '4', x: 3, y: 0, w: 1, h: 2, static: true },
                 { i: '5', x: 2, y: 1, w: 1, h: 2, static: true },
+                { i: '3', x: 0, y: 2, w: 1, h: 1, static: true },
+                { i: '8', x: 1, y: 2, w: 1, h: 1, static: true },
                 { i: '6', x: 3, y: 2, w: 1, h: 1, static: true },
-                { i: '7', x: 0, y: 2, w: 2, h: 1, static: true },
-                { i: '8', x: 0, y: 3, w: 3, h: 1, static: true },
+                { i: '7', x: 0, y: 3, w: 4, h: 1, static: true },
             ],
             lg: [
                 { i: '1', x: 0, y: 0, w: 2, h: 1, static: true },
@@ -105,8 +110,8 @@ export default function Home() {
                     <ReactGridCard key="2" id="2" isExpandable expandedContent={<ExperienceTimeline />} className="p-4 md:p-4 lg:p-6">
                         <ExperienceCard />
                     </ReactGridCard>
-                    <ReactGridCard key="3" id="3" isExpandable className="p-4 md:p-4 lg:p-6">
-                        <GithubStatsCard />
+                    <ReactGridCard key="3" id="3" isExpandable expandedContent={<CVPreview />} className="p-4 md:p-4 lg:p-6">
+                        <CVDownloadCard />
                     </ReactGridCard>
                     <ReactGridCard key="4" id="4" isExpandable>
                         <SkillsCard />
@@ -117,7 +122,7 @@ export default function Home() {
                     <ReactGridCard key="6" id="6" isExpandable className="p-4 md:p-4 lg:p-6">
                         <BlogCard />
                     </ReactGridCard>
-                    <ReactGridCard key="7" id="7" isExpandable className="p-2 md:p-4 lg:p-6 h-full">
+                    <ReactGridCard key="7" id="7" isExpandable className="p-2 md:p-4 lg:p-6 h-full text-xs">
                         <GithubContributionGraph />
                     </ReactGridCard>
                     <ReactGridCard key="8" id="8" isExpandable className="p-2 md:p-4 lg:p-6 h-full">

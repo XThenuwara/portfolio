@@ -1,269 +1,270 @@
 {
   "metadata": {
-    "title": "Yasas Hansaka Thenuwara",
-    "description": "Software Engineer | Undergraduate",
-    "openGraph": {
-      "type": "website",
-      "locale": "en_IE",
-      "url": "https://xthenuwara.github.io/xthenuwra",
       "title": "Yasas Hansaka Thenuwara",
-      "description": "Software Engineer | Undergraduate",
-      "images": [
-        {
-          "url": "https://media-hosting.imagekit.io/a5021ba2b13545a4/screenshot_1745926000398.png?Expires=1840534002&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=f8HzJDPt-tObMfAVkrHIrArHhOvBmhM3VRwQKn68TUj-LjGrEaSkzOwcuakW~0ebCRMUCaPYonexUTy3oeg-xQ01C5tNvmf63JTOvXkXPDffbGt7L~3vYfdK4w1n2-JdB4VBB667kcDqbY1oh3oHHtj6lgKGR2OUrS8zgfTigfogT8k3BdVHooD8QuRl82s5s-c9temkfL0gTXZQ~GFu889DV4jjpsn5r09K4VqwzJCClZFMfpuMX2rDXmWPf8WIDV3q2n2PtOKZLJ24pfaT7HI7NtBpoFjVwGuQTkrEqCKl5pyAh7j3wv2C~Cvee5FVGtisSBSIAAppB2zFhKBicA__",
-          "width": 1200,
-          "height": 600,
-          "alt": "Yasas Hansaka Thenuwara"
-        }
-      ]
-    }
+      "description": "Software Engineer | BSC",
+      "openGraph": {
+          "type": "website",
+          "locale": "en_IE",
+          "url": "https://xthenuwara.github.io/xthenuwra",
+          "title": "Yasas Hansaka Thenuwara",
+          "description": "Software Engineer | Undergraduate",
+          "images": [
+              {
+                  "url": "https://media-hosting.imagekit.io/a5021ba2b13545a4/screenshot_1745926000398.png?Expires=1840534002&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=f8HzJDPt-tObMfAVkrHIrArHhOvBmhM3VRwQKn68TUj-LjGrEaSkzOwcuakW~0ebCRMUCaPYonexUTy3oeg-xQ01C5tNvmf63JTOvXkXPDffbGt7L~3vYfdK4w1n2-JdB4VBB667kcDqbY1oh3oHHtj6lgKGR2OUrS8zgfTigfogT8k3BdVHooD8QuRl82s5s-c9temkfL0gTXZQ~GFu889DV4jjpsn5r09K4VqwzJCClZFMfpuMX2rDXmWPf8WIDV3q2n2PtOKZLJ24pfaT7HI7NtBpoFjVwGuQTkrEqCKl5pyAh7j3wv2C~Cvee5FVGtisSBSIAAppB2zFhKBicA__",
+                  "width": 1200,
+                  "height": 600,
+                  "alt": "Yasas Hansaka Thenuwara"
+              }
+          ]
+      }
   },
   "profile": {
-    "name": "Yasas Hansaka Thenuwara",
-    "title": "Software Engineer | Undergraduate",
-    "bio": "",
-    "quote": "Embracing the web, Experimenting with UIs, and Driven by Software Creation",
-    "contact": {
-      "email": "xthenuwara@gmail.com",
-      "phone": "",
-      "location": ""
-    },
-    "social": [
-      {
-        "name": "Github",
-        "url": "https://github.com/XThenuwara",
-        "icon": "mingcute:github-fill"
+      "name": "Yasas Hansaka Thenuwara",
+      "title": "Software Engineer | Undergraduate",
+      "cvFilename": "cv.pdf",
+      "bio": "",
+      "quote": "Embracing the web, Experimenting with UIs, and Driven by Software Creation",
+      "contact": {
+          "email": "xthenuwara@gmail.com",
+          "phone": "",
+          "location": ""
       },
-      {
-        "name": "LinkedIn",
-        "url": "https://www.linkedin.com/in/xthenuwara/",
-        "icon": "mingcute:linkedin-fill"
-      }
-    ],
-    "Experience": {
-      "startDate": "2022-05-03",
-      "companyList": [
-        {
-          "name": "Allion Technologies",
-          "position": "Software Engineer",
-          "duration": "Jan 2024 - Jan 2025",
-          "period": "1y",
-          "projects": [
-            {
-              "name": "VHCS - Virtual Healthcare Consulting System",
-              "description": "Video Consultation & Management Platform for a mid-size US-based healthcare business.",
-              "responsibilities": [
-                "Full Stack Development (Angular/ Spring-boot/ Mysql)",
-                "Collaboration with Client & Agile Methodology",
-                "Feature design & implementation",
-                "Extensive Code Reviews & Production Deployments",
-                "AWS service integration (AWS Chime/ SES/ SQS/ XRay)"
-              ]
-            }
+      "social": [
+          {
+              "name": "Github",
+              "url": "https://github.com/XThenuwara",
+              "icon": "mingcute:github-fill"
+          },
+          {
+              "name": "LinkedIn",
+              "url": "https://www.linkedin.com/in/xthenuwara/",
+              "icon": "mingcute:linkedin-fill"
+          }
+      ],
+      "Experience": {
+          "startDate": "2022-05-03",
+          "companyList": [
+              {
+                  "name": "Allion Technologies",
+                  "position": "Software Engineer",
+                  "duration": "Jan 2024 - Jan 2025",
+                  "period": "1y",
+                  "projects": [
+                      {
+                          "name": "VHCS - Virtual Healthcare Consulting System",
+                          "description": "Video Consultation & Management Platform for a mid-size US-based healthcare business.",
+                          "responsibilities": [
+                              "Full Stack Development (Angular/ Spring-boot/ Mysql)",
+                              "Collaboration with Client & Agile Methodology",
+                              "Feature design & implementation",
+                              "Extensive Code Reviews & Production Deployments",
+                              "AWS service integration (AWS Chime/ SES/ SQS/ XRay)"
+                          ]
+                      }
+                  ]
+              },
+              {
+                  "name": "Fortude",
+                  "position": "Associate Software Engineer",
+                  "duration": "May 2022 - Dec 2023",
+                  "period": "1y 8m",
+                  "projects": [
+                      {
+                          "name": "SFCS - Shop Flow Control System",
+                          "description": "Manufacturing Control and Monitoring Project for a Leading Global Apparel Exporter.",
+                          "responsibilities": [
+                              "Full Stack Development (React/ PHP/ NestJs/ MongoDb/ MariaDb)",
+                              "Bugs / Data Fixes, System Performance Optimizations",
+                              "Cloud Migration Activities",
+                              "GUI for Batch User Creation on Keycloak",
+                              "Hands-on Monitoring Experience (New Relic/ Prometheus)",
+                              "Production support, hotfix deployments, & application monitoring",
+                              "Sanity Check Automation, Reports Automations, Deployment Verification"
+                          ]
+                      }
+                  ]
+              }
           ]
-        },
-        {
-          "name": "Fortude",
-          "position": "Associate Software Engineer",
-          "duration": "May 2022 - Dec 2023",
-          "period": "1y 8m",
-          "projects": [
-            {
-              "name": "SFCS - Shop Flow Control System",
-              "description": "Manufacturing Control and Monitoring Project for a Leading Global Apparel Exporter.",
-              "responsibilities": [
-                "Full Stack Development (React/ PHP/ NestJs/ MongoDb/ MariaDb)",
-                "Bugs / Data Fixes, System Performance Optimizations",
-                "Cloud Migration Activities",
-                "GUI for Batch User Creation on Keycloak",
-                "Hands-on Monitoring Experience (New Relic/ Prometheus)",
-                "Production support, hotfix deployments, & application monitoring",
-                "Sanity Check Automation, Reports Automations, Deployment Verification"
-              ]
-            }
+      },
+      "skills": {
+          "lang": [
+              {
+                  "name": "Javascript",
+                  "icon": "logos:javascript"
+              },
+              {
+                  "name": "Typescript",
+                  "icon": "logos:typescript-icon"
+              },
+              {
+                  "name": "C#",
+                  "icon": "devicon:csharp"
+              },
+              {
+                  "name": "Go",
+                  "icon": "skill-icons:golang"
+              }
+          ],
+          "frontendFrameworks": [
+              {
+                  "name": "React",
+                  "icon": "logos:react"
+              },
+              {
+                  "name": "NextJS",
+                  "icon": "logos:nextjs-icon"
+              },
+              {
+                  "name": "Angular",
+                  "icon": "logos:angular-icon"
+              },
+              {
+                  "name": "VueJS",
+                  "icon": "logos:vue"
+              },
+              {
+                  "name": "Nuxt",
+                  "icon": "logos:nuxt-icon"
+              }
+          ],
+          "backendFrameworks": [
+              {
+                  "name": "NodeJS",
+                  "icon": "logos:nodejs-icon"
+              },
+              {
+                  "name": "Express",
+                  "icon": "skill-icons:expressjs-light"
+              },
+              {
+                  "name": "NestJS",
+                  "icon": "logos:nestjs"
+              },
+              {
+                  "name": ".Net",
+                  "icon": "logos:dotnet"
+              }
+          ],
+          "databases": [
+              {
+                  "name": "MongoDB",
+                  "icon": "logos:mongodb"
+              },
+              {
+                  "name": "MySQL",
+                  "icon": "logos:mysql-icon"
+              },
+              {
+                  "name": "PostgreSQL",
+                  "icon": "logos:postgresql"
+              },
+              {
+                  "name": "Redis",
+                  "icon": "logos:redis"
+              },
+              {
+                  "name": "Firebase",
+                  "icon": "logos:firebase"
+              },
+              {
+                  "name": "MariaDB",
+                  "icon": "logos:mariadb"
+              },
+              {
+                  "name": "SQLite",
+                  "icon": "logos:sqlite"
+              },
+              {
+                  "name": "Oracle",
+                  "icon": "logos:oracle"
+              }
+          ],
+          "devOps": [
+              {
+                  "name": "NewRelic",
+                  "icon": "logos:new-relic-icon"
+              },
+              {
+                  "name": "Prometheus",
+                  "icon": "logos:prometheus"
+              },
+              {
+                  "name": "Netlify",
+                  "icon": "logos:netlify-icon"
+              },
+              {
+                  "name": "Vercel",
+                  "icon": "logos:vercel-icon"
+              }
+          ],
+          "softwares": [
+              {
+                  "name": "Git",
+                  "icon": "logos:git-icon"
+              },
+              {
+                  "name": "Docker",
+                  "icon": "logos:docker-icon"
+              },
+              {
+                  "name": "Jira",
+                  "icon": "logos:jira"
+              },
+              {
+                  "name": "Confluence",
+                  "icon": "logos:confluence"
+              },
+              {
+                  "name": "VSCode",
+                  "icon": "logos:visual-studio-code"
+              },
+              {
+                  "name": "Postman",
+                  "icon": "logos:postman-icon"
+              },
+              {
+                  "name": "Figma",
+                  "icon": "logos:figma"
+              }
+          ],
+          "aws": [
+              {
+                  "name": "Amplify",
+                  "icon": "logos:aws-amplify"
+              },
+              {
+                  "name": "Cognito",
+                  "icon": "logos:aws-cognito"
+              },
+              {
+                  "name": "DynamoDB",
+                  "icon": "logos:aws-dynamodb"
+              },
+              {
+                  "name": "Lambda",
+                  "icon": "logos:aws-lambda"
+              },
+              {
+                  "name": "S3",
+                  "icon": "logos:aws-s3"
+              },
+              {
+                  "name": "Cloud Formation",
+                  "icon": "logos:aws-cloudformation"
+              },
+              {
+                  "name": "App Sync",
+                  "icon": "logos:aws-appsync"
+              }
           ]
-        }
+      },
+      "projects": [
+          {
+              "title": "Keycloak Kit",
+              "description": "batch user management tool for Keycloak, import your user list in just three simple steps, streamlining your authentication and access 🔐✨ #Keycloak",
+              "link": "https://github.com/XThenuwara/keycloak-kit"
+          }
       ]
-    },
-    "skills": {
-      "lang": [
-        {
-          "name": "Javascript",
-          "icon": "logos:javascript"
-        },
-        {
-          "name": "Typescript",
-          "icon": "logos:typescript-icon"
-        },
-        {
-          "name": "C#",
-          "icon": "devicon:csharp"
-        },
-        {
-          "name": "Go",
-          "icon": "skill-icons:golang"
-        }
-      ],
-      "frontendFrameworks": [
-        {
-          "name": "React",
-          "icon": "logos:react"
-        },
-        {
-          "name": "NextJS",
-          "icon": "logos:nextjs-icon"
-        },
-        {
-          "name": "Angular",
-          "icon": "logos:angular-icon"
-        },
-        {
-          "name": "VueJS",
-          "icon": "logos:vue"
-        },
-        {
-          "name": "Nuxt",
-          "icon": "logos:nuxt-icon"
-        }
-      ],
-      "backendFrameworks": [
-        {
-          "name": "NodeJS",
-          "icon": "logos:nodejs-icon"
-        },
-        {
-          "name": "Express",
-          "icon": "skill-icons:expressjs-light"
-        },
-        {
-          "name": "NestJS",
-          "icon": "logos:nestjs"
-        },
-        {
-          "name": ".Net",
-          "icon": "logos:dotnet"
-        }
-      ],
-      "databases": [
-        {
-          "name": "MongoDB",
-          "icon": "logos:mongodb"
-        },
-        {
-          "name": "MySQL",
-          "icon": "logos:mysql-icon"
-        },
-        {
-          "name": "PostgreSQL",
-          "icon": "logos:postgresql"
-        },
-        {
-          "name": "Redis",
-          "icon": "logos:redis"
-        },
-        {
-          "name": "Firebase",
-          "icon": "logos:firebase"
-        },
-        {
-          "name": "MariaDB",
-          "icon": "logos:mariadb"
-        },
-        {
-          "name": "SQLite",
-          "icon": "logos:sqlite"
-        },
-        {
-          "name": "Oracle",
-          "icon": "logos:oracle"
-        }
-      ],
-      "devOps": [
-        {
-          "name": "NewRelic",
-          "icon": "logos:new-relic-icon"
-        },
-        {
-          "name": "Prometheus",
-          "icon": "logos:prometheus"
-        },
-        {
-          "name": "Netlify",
-          "icon": "logos:netlify-icon"
-        },
-        {
-          "name": "Vercel",
-          "icon": "logos:vercel-icon"
-        }
-      ],
-      "softwares": [
-        {
-          "name": "Git",
-          "icon": "logos:git-icon"
-        },
-        {
-          "name": "Docker",
-          "icon": "logos:docker-icon"
-        },
-        {
-          "name": "Jira",
-          "icon": "logos:jira"
-        },
-        {
-          "name": "Confluence",
-          "icon": "logos:confluence"
-        },
-        {
-          "name": "VSCode",
-          "icon": "logos:visual-studio-code"
-        },
-        {
-          "name": "Postman",
-          "icon": "logos:postman-icon"
-        },
-        {
-          "name": "Figma",
-          "icon": "logos:figma"
-        }
-      ],
-      "aws": [
-        {
-          "name": "Amplify",
-          "icon": "logos:aws-amplify"
-        },
-        {
-          "name": "Cognito",
-          "icon": "logos:aws-cognito"
-        },
-        {
-          "name": "DynamoDB",
-          "icon": "logos:aws-dynamodb"
-        },
-        {
-          "name": "Lambda",
-          "icon": "logos:aws-lambda"
-        },
-        {
-          "name": "S3",
-          "icon": "logos:aws-s3"
-        },
-        {
-          "name": "Cloud Formation",
-          "icon": "logos:aws-cloudformation"
-        },
-        {
-          "name": "App Sync",
-          "icon": "logos:aws-appsync"
-        }
-      ]
-    },
-    "projects": [
-      {
-        "title": "Keycloak Kit",
-        "description": "batch user management tool for Keycloak, import your user list in just three simple steps, streamlining your authentication and access 🔐✨ #Keycloak",
-        "link": "https://github.com/XThenuwara/keycloak-kit"
-      }
-    ]
   },
   "blog": {
     "owner": "XThenuwara",
