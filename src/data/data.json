@@ -306,8 +306,18 @@
       "projects": [
           {
               "title": "Keycloak Kit",
-              "description": "batch user management tool for Keycloak, import your user list in just three simple steps, streamlining your authentication and access 🔐✨ #Keycloak",
+              "description": "Batch user management tool for Keycloak. Import your user list in just three simple steps, streamlining authentication & access.",
               "link": "https://github.com/XThenuwara/keycloak-kit"
+          },
+          {
+              "title": "FXRScout",
+              "description": "Compare daily buying/selling exchange rates across Sri Lankan commercial banks relative to Google Interbank and CBSL benchmarks.",
+              "link": "https://xthenuwara.github.io/FXRScout/"
+          },
+          {
+              "title": "DutyDrive",
+              "description": "Calculate import duties, taxes, and total costs for importing vehicles to Sri Lanka. Includes CIF, PAL, VAT, and other charges with real-time exchange rates.",
+              "link": "https://xthenuwara.github.io/DutyDrive/"
           }
       ]
   },

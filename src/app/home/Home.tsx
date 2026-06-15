@@ -8,6 +8,7 @@ import ProfileCard from '@/app/home/components/ProfileCard'
 import ExperienceCard from '@/app/home/components/ExperienceCard'
 import SkillsCard from '@/app/home/components/SkillsCard'
 import ProjectsCard from '@/app/home/components/ProjectsCard'
+import ProjectsExpanded from '@/app/home/components/ProjectsExpanded'
 import QuoteCard from '@/app/home/components/QuoteCard'
 import ExperienceTimeline from '@/app/home/components/ExperienceTimeline'
 import dynamic from 'next/dynamic'
@@ -116,7 +117,7 @@ export default function Home() {
                     <ReactGridCard key="4" id="4" isExpandable>
                         <SkillsCard />
                     </ReactGridCard>
-                    <ReactGridCard key="5" id="5" isExpandable className="p-2 md:p-4 lg:p-6">
+                    <ReactGridCard key="5" id="5" isExpandable expandedContent={<ProjectsExpanded />} className="p-2 md:p-4 lg:p-6">
                         <ProjectsCard />
                     </ReactGridCard>
                     <ReactGridCard key="6" id="6" isExpandable className="p-4 md:p-4 lg:p-6">
