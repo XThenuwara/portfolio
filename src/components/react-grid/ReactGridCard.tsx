@@ -168,8 +168,8 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                     </motion.div>
 
                                     {/* Content */}
-                                    <motion.div layoutId={`content-${id}`} className="flex-1 min-h-0 overflow-hidden" transition={contentSpring}>
-                                        <CardContent className="h-full p-0 overflow-y-auto">{expandedContent || children}</CardContent>
+                                    <motion.div layoutId={`content-${id}`} className="flex-1 min-h-0 flex flex-col" transition={contentSpring}>
+                                        <CardContent className="flex-1 min-h-0 overflow-y-auto p-0">{expandedContent || children}</CardContent>
                                     </motion.div>
                                 </Card>
                             </motion.div>

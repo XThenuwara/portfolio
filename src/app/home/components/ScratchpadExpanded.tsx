@@ -120,7 +120,7 @@ const MasonryCard = memo(({
 MasonryCard.displayName = 'MasonryCard'
 
 // ─── Right Preview Panel ───────────────────────────────────────────────────────
-const PreviewPanel = memo(({ log, logNumber }: { log: ScratchpadItem; logNumber: number }) => {
+const PreviewPanel = memo(({ log, logNumber, onBack }: { log: ScratchpadItem; logNumber: number; onBack?: () => void }) => {
     const [imgSrc, setImgSrc] = useState<string | null>(null)
     const headingRef = useRef<HTMLHeadingElement>(null)
 
@@ -141,8 +141,17 @@ const PreviewPanel = memo(({ log, logNumber }: { log: ScratchpadItem; logNumber:
     return (
         <div className="flex flex-col h-full min-h-0">
             {/* Header */}
-            <div className="px-5 pt-4 pb-3 border-b border-neutral-100 dark:border-white/6 shrink-0">
+            <div className="px-4 md:px-5 pt-4 pb-3 border-b border-neutral-100 dark:border-white/6 shrink-0">
                 <div className="flex items-center gap-2 flex-wrap">
+                    {onBack && (
+                        <button
+                            onClick={onBack}
+                            aria-label="Back to log list"
+                            className="md:hidden mr-2 p-1 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/8 text-neutral-500 dark:text-neutral-400 transition-colors focus-visible:outline focus-visible:outline-2"
+                        >
+                            <Icon icon="lucide:arrow-left" width="16" aria-hidden="true" />
+                        </button>
+                    )}
                     {/* Focusable heading — receives focus on log change for screen readers */}
                     <h2
                         ref={headingRef}
@@ -213,7 +222,7 @@ const PreviewPanel = memo(({ log, logNumber }: { log: ScratchpadItem; logNumber:
                 ) : (
                     // aria-live so screen readers announce when the content changes
                     <div
-                        className="absolute inset-0 overflow-y-auto px-5 py-4"
+                        className="absolute inset-0 overflow-y-auto px-4 md:px-5 py-4"
                         onClick={handleClick}
                         aria-live="polite"
                         aria-atomic="false"
@@ -239,6 +248,7 @@ const ScratchpadExpanded = () => {
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedTag, setSelectedTag] = useState('All')
     const [selectedLog, setSelectedLog] = useState<ScratchpadItem | null>(null)
+    const [isMobilePreviewOpen, setIsMobilePreviewOpen] = useState(false)
 
     const docId = getGoogleDocId()
     const searchId = 'scratchpad-search'
@@ -267,7 +277,10 @@ const ScratchpadExpanded = () => {
         }
     }, [content, selectedLog])
 
-    const handleCardClick = useCallback((item: ScratchpadItem) => setSelectedLog(item), [])
+    const handleCardClick = useCallback((item: ScratchpadItem) => {
+        setSelectedLog(item)
+        setIsMobilePreviewOpen(true)
+    }, [])
 
     const allTags = useMemo(() => {
         if (!content?.items) return ['All']
@@ -312,12 +325,13 @@ const ScratchpadExpanded = () => {
     )
 
     return (
-        <div className="flex h-full min-h-0 overflow-hidden">
+        <div className="flex h-full min-h-0 overflow-hidden w-full">
 
             {/* ══ LEFT: Masonry grid ════════════════════════════════════════════ */}
             <section
                 aria-label="Scratchpad log list"
-                className="flex flex-col min-h-0 w-[52%] shrink-0 border-r border-neutral-100 dark:border-white/6"
+                className={`flex flex-col min-h-0 border-neutral-100 dark:border-white/6
+                    ${isMobilePreviewOpen ? 'hidden md:flex md:w-[52%] md:shrink-0 md:border-r' : 'flex w-full md:w-[52%] md:shrink-0 md:border-r'}`}
             >
                 {/* Toolbar */}
                 <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-neutral-100 dark:border-white/6 shrink-0">
@@ -435,12 +449,17 @@ const ScratchpadExpanded = () => {
             {/* ══ RIGHT: Preview panel ══════════════════════════════════════════ */}
             <main
                 aria-label="Log preview"
-                className="flex-1 min-h-0 overflow-hidden"
+                className={`min-h-0 overflow-hidden
+                    ${isMobilePreviewOpen ? 'flex flex-col flex-1 w-full' : 'hidden md:flex md:flex-col md:flex-1'}`}
             >
                 {selectedLog ? (
-                    <PreviewPanel log={selectedLog} logNumber={logNumber} />
+                    <PreviewPanel
+                        log={selectedLog}
+                        logNumber={logNumber}
+                        onBack={() => setIsMobilePreviewOpen(false)}
+                    />
                 ) : (
-                    <div className="h-full flex items-center justify-center" aria-hidden="true">
+                    <div className="h-full flex items-center justify-center w-full" aria-hidden="true">
                         <div className="text-center">
                             <Icon icon="lucide:mouse-pointer-click" width="28" className="text-neutral-300 dark:text-neutral-700 mx-auto mb-2" />
                             <p className="text-xs text-neutral-400 dark:text-neutral-500">Select a log to preview</p>
