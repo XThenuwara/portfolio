@@ -71,7 +71,7 @@ html {
 
 *::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    border: 1px solid rgba(149, 149, 149, 1z);
+    border: 1px solid rgba(149, 149, 149, 0.2);
 }
 
 /* glass */
@@ -196,4 +196,403 @@ html {
 
 .grid-container .react-resizable-handle {
     display: none !important;
+}
+
+/* Scratchpad Google Doc Content Typography */
+
+.scratchpad-content h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.scratchpad-content h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.scratchpad-content h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.scratchpad-content p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.625;
+}
+
+.scratchpad-content a {
+    text-decoration: underline;
+    font-weight: 500;
+    transition-property: opacity;
+    transition-duration: 150ms;
+}
+
+.scratchpad-content a:hover {
+    opacity: 0.8;
+}
+
+.scratchpad-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.scratchpad-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.scratchpad-content li {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.scratchpad-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    position: relative;
+}
+
+.scratchpad-content img:hover {
+    transform: scale(1.015);
+    box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.18), 0 4px 8px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Wrapper for images to enable overlay zoom hint */
+.scratchpad-img-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    cursor: zoom-in;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.scratchpad-img-wrapper img {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    cursor: zoom-in;
+    width: 100%;
+}
+
+.scratchpad-img-wrapper .zoom-hint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 0.5rem;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.scratchpad-img-wrapper:hover .zoom-hint {
+    opacity: 1;
+}
+
+.scratchpad-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.scratchpad-content th {
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.scratchpad-content td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+}
+
+.light .scratchpad-content {
+    color: #4b5563;
+}
+
+.light .scratchpad-content h1,
+.light .scratchpad-content h2,
+.light .scratchpad-content h3 {
+    color: #111827;
+}
+
+.light .scratchpad-content a {
+    color: #1f2937;
+}
+
+.light .scratchpad-content th {
+    background-color: #f9fafb;
+}
+
+.dark .scratchpad-content {
+    color: #9ca3af;
+}
+
+.dark .scratchpad-content h1,
+.dark .scratchpad-content h2,
+.dark .scratchpad-content h3 {
+    color: #f9fafb;
+}
+
+.dark .scratchpad-content a {
+    color: #f3f4f6;
+}
+
+.dark .scratchpad-content th {
+    background-color: rgba(17, 17, 17, 0.5);
+}
+
+/* Custom display settings for images in the full scratchpad reader */
+.scratchpad-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 12px 0;
+    display: block;
+    cursor: zoom-in;
+}
+
+/* Home Card Nested Item Overrides */
+
+.scratchpad-home-content img,
+.scratchpad-home-content table,
+.scratchpad-home-content hr {
+    display: none !important;
+}
+
+.scratchpad-home-content h1,
+.scratchpad-home-content h2,
+.scratchpad-home-content h3,
+.scratchpad-home-content h4 {
+    font-size: 13px !important;
+    font-weight: bold !important;
+    margin-top: 4px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.25 !important;
+}
+
+.scratchpad-home-content p {
+    font-size: 11px !important;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.4 !important;
+}
+
+.scratchpad-home-content ul,
+.scratchpad-home-content ol {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    padding-left: 1rem !important;
+}
+
+.scratchpad-home-content li {
+    font-size: 11px !important;
+    margin-top: 1px !important;
+    margin-bottom: 1px !important;
+}
+
+/* Expanded modal card overrides — compact text, show images as thumbnails */
+
+.scratchpad-card-content table,
+.scratchpad-card-content hr {
+    display: none !important;
+}
+
+.scratchpad-card-content h1,
+.scratchpad-card-content h2,
+.scratchpad-card-content h3,
+.scratchpad-card-content h4 {
+    font-size: 12px !important;
+    font-weight: bold !important;
+    margin-top: 4px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.25 !important;
+}
+
+.scratchpad-card-content p {
+    font-size: 11px !important;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.4 !important;
+}
+
+.scratchpad-card-content ul,
+.scratchpad-card-content ol {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    padding-left: 1rem !important;
+}
+
+.scratchpad-card-content li {
+    font-size: 11px !important;
+    margin-top: 1px !important;
+    margin-bottom: 1px !important;
+}
+
+/* scratchpad-card-content img — thumbnail with reserved dimensions (CLS fix) */
+.scratchpad-card-content img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 6px 0 4px;
+    display: block;
+    cursor: zoom-in;
+    contain: layout;
+}
+
+/* Masonry card containment — skip off-screen rendering (LCP + perf) */
+.scratchpad-masonry-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 220px; /* estimated card height */
+}
+
+/* Code block and monospaced text formatting from Google Docs */
+[data-monospace] {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: 0.85em;
+    border-radius: 4px;
+    padding: 0.15rem 0.3rem;
+}
+
+p[data-monospace], 
+div[data-monospace] {
+    display: block;
+    font-size: 0.825rem;
+    line-height: 1.5;
+    padding: 0.85rem 1rem;
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.light [data-monospace] {
+    background-color: rgba(31, 35, 40, 0.06);
+    color: #b91c1c; /* A clean crimson tone for code in light mode */
+}
+.light p[data-monospace],
+.light div[data-monospace] {
+    background-color: #f7f8f9;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+}
+
+.dark [data-monospace] {
+    background-color: rgba(244, 63, 94, 0.1);
+    color: #fb7185; /* A beautiful rose/salmon shade for code in dark mode */
+}
+.dark p[data-monospace],
+.dark div[data-monospace] {
+    background-color: #0f1115;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #cbd5e1;
+}
+
+/* Interactive Filter tags */
+.filter-tag-btn {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.filter-tag-btn:hover {
+    transform: translateY(-1px);
+}
+.filter-tag-btn:active {
+    transform: translateY(0);
+}
+
+/* Glassmorphism search input focus ring */
+.search-glass {
+    transition: all 0.3s ease;
+}
+.search-glass:focus {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Custom transitions for filtered elements in masonry grid */
+.masonry-item-enter {
+    opacity: 0;
+    transform: scale(0.95);
+}
+.masonry-item-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 300ms, transform 300ms;
+}
+.masonry-item-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+.masonry-item-exit-active {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 200ms, transform 200ms;
+}
+
+/* Zoom panel fills the right side of the split modal */
+.react-transform-wrapper {
+    width: 100% !important;
+    flex: 1 1 0% !important;
+    min-height: 0 !important;
+}
+
+/* Lightbox zoom dialog controls */
+.lightbox-controls {
+    position: absolute;
+    z-index: 50;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lightbox-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+    backdrop-filter: blur(8px);
+}
+
+.lightbox-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: scale(1.08);
+}
+
+.lightbox-btn:active {
+    transform: scale(0.95);
 }

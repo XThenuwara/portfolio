@@ -116,7 +116,7 @@ const ProjectsCard = () => {
             </div>
 
             {/* Footer Row: Dots + Link Button */}
-            <div className="flex justify-between items-center mt-2 pt-2 border-t border-neutral-100 dark:border-neutral-800/40 select-none">
+            <div className="flex justify-between items-center mt-2 pt-2 select-none">
                 {/* Dot Indicators */}
                 <div className="flex gap-1.5 z-40">
                     {projects.map((_, index) => (

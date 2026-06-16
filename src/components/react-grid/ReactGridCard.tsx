@@ -9,6 +9,7 @@ interface ReactGridCardProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string
     children: React.ReactNode
     expandedContent?: React.ReactNode
+    expandedStyle?: React.CSSProperties  // optional override for expanded card dimensions
     id: string
     title?: string
     description?: string
@@ -30,7 +31,7 @@ const contentSpring = {
 } as const
 
 const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
-    ({ className, children, expandedContent, id, title, description, isExpandable = false, ...props }, ref) => {
+    ({ className, children, expandedContent, expandedStyle, id, title, description, isExpandable = false, ...props }, ref) => {
         const [isExpanded, setIsExpanded] = useState(false)
 
         const toggleScrollLock = useCallback((lock: boolean) => {
@@ -126,18 +127,20 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                             <motion.div
                                 key={`expanded-${id}`}
                                 layoutId={`card-${id}`}
-                                className="fixed z-50 w-[92vw] max-w-5xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
+                                className="fixed z-50 w-[92vw] max-w-6xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
                                 transition={morphSpring}
                                 exit={{ opacity: 0, transition: { duration: 0.22, ease: 'easeIn' } }}
                                 style={{ borderRadius: 16 }}
                             >
                                 <Card
                                     className={cn(
-                                        'flex flex-col max-h-[90vh] overflow-hidden',
+                                        'flex flex-col overflow-hidden',
                                         '!bg-card/70 backdrop-blur-xl',
                                         'border border-white/10 shadow-2xl ring-1 ring-white/5 rounded-2xl',
-                                        className
+                                        !expandedStyle && 'max-h-[90vh]',
+                                        className,
                                     )}
+                                    style={expandedStyle}
                                 >
                                     {/* Header — staggered fade in, instant fade out */}
                                     <motion.div
@@ -165,8 +168,8 @@ const ReactGridCard = React.forwardRef<HTMLDivElement, ReactGridCardProps>(
                                     </motion.div>
 
                                     {/* Content */}
-                                    <motion.div layoutId={`content-${id}`} className="flex-1 min-h-0 overflow-y-auto" transition={contentSpring}>
-                                        <CardContent className="h-full p-2">{expandedContent || children}</CardContent>
+                                    <motion.div layoutId={`content-${id}`} className="flex-1 min-h-0 overflow-hidden" transition={contentSpring}>
+                                        <CardContent className="h-full p-0 overflow-y-auto">{expandedContent || children}</CardContent>
                                     </motion.div>
                                 </Card>
                             </motion.div>

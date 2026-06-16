@@ -47,6 +47,16 @@ const CVPreview = dynamic(() => import('@/app/home/components/CVPreview'), {
     ssr: false,
 })
 
+const ScratchpadCard = dynamic(() => import('@/app/home/components/ScratchpadCard'), {
+    loading: () => <GridSkeleton />,
+    ssr: false,
+})
+
+const ScratchpadExpanded = dynamic(() => import('@/app/home/components/ScratchpadExpanded'), {
+    loading: () => <GridSkeleton />,
+    ssr: false,
+})
+
 export default function Home() {
     const breakpoints = { lg: 996, md: 768, sm: 578 }
     const cols = { lg: 4, md: 4, sm: 2 }
@@ -63,6 +73,7 @@ export default function Home() {
                 { i: '4', x: 1, y: 5, w: 1, h: 2, static: true },
                 { i: '6', x: 0, y: 7, w: 2, h: 1, static: true },
                 { i: '7', x: 0, y: 8, w: 2, h: 1, static: true },
+                { i: '9', x: 0, y: 9, w: 2, h: 1, static: true },
             ],
             md: [
                 { i: '1', x: 0, y: 0, w: 2, h: 2, static: true },
@@ -73,6 +84,7 @@ export default function Home() {
                 { i: '8', x: 1, y: 2, w: 1, h: 1, static: true },
                 { i: '6', x: 3, y: 2, w: 1, h: 1, static: true },
                 { i: '7', x: 0, y: 3, w: 4, h: 1, static: true },
+                { i: '9', x: 0, y: 4, w: 4, h: 1, static: true },
             ],
             lg: [
                 { i: '1', x: 0, y: 0, w: 2, h: 1, static: true },
@@ -83,6 +95,7 @@ export default function Home() {
                 { i: '6', x: 3, y: 2, w: 1, h: 1, static: true },
                 { i: '7', x: 0, y: 2, w: 2, h: 1, static: true },
                 { i: '8', x: 1, y: 1, w: 1, h: 1, static: true },
+                { i: '9', x: 0, y: 3, w: 4, h: 1, static: true },
             ],
         }),
         []
@@ -128,6 +141,9 @@ export default function Home() {
                     </ReactGridCard>
                     <ReactGridCard key="8" id="8" isExpandable className="p-2 md:p-4 lg:p-6 h-full">
                         <QuoteCard />
+                    </ReactGridCard>
+                    <ReactGridCard key="9" id="9" isExpandable expandedContent={<ScratchpadExpanded />} className="p-2 md:p-4 lg:p-5 h-full" expandedStyle={{ height: '88vh' }}>
+                        <ScratchpadCard />
                     </ReactGridCard>
                 </ResponsiveGridLayout>
             </div>

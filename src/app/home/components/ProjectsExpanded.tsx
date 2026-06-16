@@ -18,7 +18,7 @@ const ProjectsExpanded = () => {
     const projects = useMemo(() => data.profile.projects as Project[], [])
 
     return (
-        <div className="p-4 md:p-6 w-full max-h-[80vh] overflow-y-auto select-none">
+        <div className="p-4 md:p-6 w-full select-none">
             <div className="flex flex-col gap-2 mb-8">
                 <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-50 dark:to-neutral-400 bg-clip-text text-transparent">
                     Personal Projects
